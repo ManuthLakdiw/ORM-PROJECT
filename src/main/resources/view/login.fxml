@@ -37,6 +37,5 @@
    </children>
    <stylesheets>
       <URL value="@../styles/pane.css" />
-      <URL value="@../styles/icon.css" />
    </stylesheets>
 </AnchorPane>
