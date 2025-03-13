@@ -39,3 +39,11 @@ build/
 
 mvnw.cmd
 mvnw
+
+misc.xml
+uiDesigner.xml
+vcs.xml
+.gitignore
+encodings.xml
+maven-wrapper.jar
+maven-wrapper.properties
