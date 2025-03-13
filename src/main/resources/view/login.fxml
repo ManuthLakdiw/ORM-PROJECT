@@ -8,7 +8,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <AnchorPane prefHeight="400.0" prefWidth="643.0" styleClass="login-pane" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.orm.ormproject.controller.LoginFormController">
    <children>
@@ -34,7 +33,6 @@
          </font>
       </Label>
       <PasswordField fx:id="txtPassword" layoutX="193.0" layoutY="223.0" onKeyTyped="#txtPasswordOnKeyTyped" promptText="enter your password" styleClass="text-f" stylesheets="@../styles/text-field.css" />
-      <FontIcon layoutX="489.0" layoutY="237.0" wrappingWidth="1.0" />
       <CheckBox fx:id="checkBox" layoutX="448.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#checkBoxOnMouseClicked" prefHeight="18.0" prefWidth="22.0" styleClass="check-b" stylesheets="@../styles/check-box.css" textFill="WHITE" />
    </children>
    <stylesheets>
