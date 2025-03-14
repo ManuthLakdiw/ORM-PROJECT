@@ -6,8 +6,7 @@ module lk.ijse.orm.ormproject {
     requires org.hibernate.orm.core;
     requires jakarta.persistence;
     requires java.naming;
-
-
+    requires jbcrypt;
 
     opens lk.ijse.orm.ormproject.controller to javafx.fxml;
     exports lk.ijse.orm.ormproject;
