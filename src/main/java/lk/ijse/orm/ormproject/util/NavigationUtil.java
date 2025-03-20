@@ -30,8 +30,8 @@ public class NavigationUtil {
             currentStage.close();
         }
 
-        fxmlLoader = new FXMLLoader(currentClass.getResource(navPath)); // 🛠️ FIXED (Initialize loader)
-        Parent load = fxmlLoader.load(); // 🛠️ FIXED (Now loading correctly)
+        fxmlLoader = new FXMLLoader(currentClass.getResource(navPath));
+        Parent load = fxmlLoader.load();
 
         Stage newStage = new Stage();
         Scene scene = new Scene(load);
