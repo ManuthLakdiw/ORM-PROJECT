@@ -16,31 +16,38 @@ import java.io.IOException;
 
 public class NavigationUtil {
 
-    public static void getNewStage(Stage currentStage, Class currentClass, String title, String navPath) {
+    private static FXMLLoader fxmlLoader;
 
+    public static <T>T getController(){
+        if (fxmlLoader != null) {
+            return fxmlLoader.getController();
+        }
+        return null;
+    }
+
+    public static void getNewStage(Stage currentStage, Class currentClass, String title, String navPath) throws IOException {
         if (currentStage != null) {
             currentStage.close();
         }
 
+        fxmlLoader = new FXMLLoader(currentClass.getResource(navPath)); // 🛠️ FIXED (Initialize loader)
+        Parent load = fxmlLoader.load(); // 🛠️ FIXED (Now loading correctly)
+
         Stage newStage = new Stage();
-        Parent load = null;
-        try {
-            load = FXMLLoader.load(currentClass.getResource(navPath));
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("path is incorrect!!!");
-        }
         Scene scene = new Scene(load);
         newStage.setScene(scene);
         newStage.setTitle(title);
         newStage.setResizable(false);
 
+        // Smooth fade transition
         FadeTransition fadeIn = new FadeTransition(Duration.millis(500), load);
         fadeIn.setFromValue(0);
         fadeIn.setToValue(1);
         fadeIn.play();
 
         newStage.show();
+
+
     }
 
 
