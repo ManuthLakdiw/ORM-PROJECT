@@ -13,6 +13,6 @@ import java.util.Optional;
  */
 public interface UserDao extends CrudDao<User, String> {
 
-    User getUserByUserName(String username) throws Exception;
+    Optional<User> getUserByUserName(String username) throws Exception;
 
 }

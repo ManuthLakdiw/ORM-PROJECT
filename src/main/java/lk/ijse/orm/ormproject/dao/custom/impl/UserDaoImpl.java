@@ -24,14 +24,14 @@ public class UserDaoImpl implements UserDao {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction tx = session.beginTransaction();
 
-        try{
+        try {
             session.persist(entity);
             tx.commit();
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             tx.rollback();
             return false;
-        }finally {
+        } finally {
             session.close();
         }
     }
@@ -45,7 +45,7 @@ public class UserDaoImpl implements UserDao {
             User user = session.get(User.class, entity.getId());
             user.setUsername(entity.getUsername());
             Optional<String> password = Optional.ofNullable(entity.getPassword());
-            if(password.isPresent()){
+            if (password.isPresent()) {
                 user.setPassword(entity.getPassword());
             }
             user.setRole(entity.getRole());
@@ -53,9 +53,9 @@ public class UserDaoImpl implements UserDao {
             tx.commit();
             return true;
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
         return false;
@@ -67,9 +67,9 @@ public class UserDaoImpl implements UserDao {
         Transaction tx = session.beginTransaction();
         try {
             User user = session.get(User.class, id);
-                session.remove(user);
-                tx.commit();
-                return true;
+            session.remove(user);
+            tx.commit();
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -100,36 +100,36 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Optional<String> lastPK() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
-        String lastPK =  session.createQuery("SELECT u.id from User u order by u.id desc" , String.class).setMaxResults(1).uniqueResult();
+        String lastPK = session.createQuery("SELECT u.id from User u order by u.id desc", String.class).setMaxResults(1).uniqueResult();
         session.close();
         return Optional.of(lastPK);
     }
 
     @Override
-    public User getUserByUserName(String username) throws Exception {
+    public Optional<User> getUserByUserName(String username) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction tx = session.beginTransaction();
+        User user = null;
 
         try {
             Query<User> qUser = session.createQuery("FROM User WHERE username = :username", User.class);
             qUser.setParameter("username", username);
 
-            User user = qUser.getSingleResult();
-                System.out.println(user.getId());
-                System.out.println(user.getUsername());
-                System.out.println(user.getPassword());
-                System.out.println(user.getRole());
-                tx.commit();
+            user = qUser.getSingleResult();
+            System.out.println(user.getId());
+            System.out.println(user.getUsername());
+            System.out.println(user.getPassword());
+            System.out.println(user.getRole());
+            tx.commit();
             System.out.println("have user");
-                return user;
 
         } catch (Exception e) {
             System.out.println("dont have user");
 
-            return null;
-
         } finally {
             session.close();
         }
+
+        return Optional.ofNullable(user);
     }
 }

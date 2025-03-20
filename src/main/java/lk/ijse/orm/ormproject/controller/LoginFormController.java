@@ -51,37 +51,37 @@ public class LoginFormController implements Initializable {
     @FXML
     void btnLoginOnMouseClicked(MouseEvent event) throws Exception {
 
-        NavigationUtil.getNewStage(
-                (Stage) logPane.getScene().getWindow(),
-                LoginFormController.class
-                , "Dashboard"
-                , "/view/dashBoard.fxml"
-        );
+//        NavigationUtil.getNewStage(
+//                (Stage) logPane.getScene().getWindow(),
+//                LoginFormController.class
+//                , "Dashboard"
+//                , "/view/dashBoard.fxml"
+//        );
 
 
-//        if (!(txtUserName.getText().isEmpty() || txtPassword.getText().isEmpty())) {
-//            boolean isVerified = user.verifyUser(txtUserName.getText(), txtShowPw.getText());
-//            if (isVerified) {
-////                AlertUtil.setInformationAlert(LoginFormController.class , "" , "Verified" , true);
-//
-//                NavigationUtil.getNewStage(
-//                        (Stage) logPane.getScene().getWindow(),
-//                        LoginFormController.class
-//                        , "Dashboard"
-//                        , "/view/dashBoard.fxml"
-//                );
-//
-//            }else {
-////                AlertUtil.setInformationAlert(LoginFormController.class , "" , "UserName or Password doesn't match" , false);
-//                RegexUtil.setErrorStyle(true ,txtPassword,txtUserName,txtShowPw);
-//                txtPassword.clear();
-//                txtUserName.clear();
-//                txtShowPw.clear();
-//
-//            }
-//        }else {
-//            AlertUtil.setInformationAlert(LoginFormController.class , "" , "Please fill both Fields!" , true);
-//        }
+        if (!(txtUserName.getText().isEmpty() || txtPassword.getText().isEmpty())) {
+            boolean isVerified = user.verifyUser(txtUserName.getText(), txtShowPw.getText());
+            if (isVerified) {
+//                AlertUtil.setInformationAlert(LoginFormController.class , "" , "Verified" , true);
+
+                NavigationUtil.getNewStage(
+                        (Stage) logPane.getScene().getWindow(),
+                        LoginFormController.class
+                        , "Dashboard"
+                        , "/view/dashBoard.fxml"
+                );
+
+            }else {
+//                AlertUtil.setInformationAlert(LoginFormController.class , "" , "UserName or Password doesn't match" , false);
+                RegexUtil.setErrorStyle(true ,txtPassword,txtUserName,txtShowPw);
+                txtPassword.clear();
+                txtUserName.clear();
+                txtShowPw.clear();
+
+            }
+        }else {
+            AlertUtil.setInformationAlert(LoginFormController.class , "" , "Please fill both Fields!" , true);
+        }
 
 
 //
