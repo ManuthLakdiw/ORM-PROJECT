@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="userPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1035.0" styleClass="pane" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.orm.ormproject.controller.UserFormController">
+   <children>
+      <TableView fx:id="tblUser" layoutX="56.0" layoutY="241.0" prefHeight="362.0" prefWidth="924.0">
+        <columns>
+          <TableColumn fx:id="colID" prefWidth="173.78741073608398" text="ID" />
+            <TableColumn fx:id="colUserName" minWidth="3.1930389404296875" prefWidth="275.21258544921875" text="Name" />
+            <TableColumn fx:id="colUserRole" prefWidth="218.48477172851562" text="Role" />
+            <TableColumn fx:id="colUserUpdate" minWidth="0.0" prefWidth="130.8134765625" text="update" />
+            <TableColumn fx:id="colUserDelete" minWidth="-Infinity" prefWidth="130.98309326171875" text="delete" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnAdd" layoutX="832.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#btnAddOnMouseClicked" prefHeight="40.0" prefWidth="167.0" styleClass="btn-add-user" text="+ Add" textFill="WHITE" />
+   </children>
+   <stylesheets>
+      <URL value="@../styles/normalize.css" />
+      <URL value="@../styles/table.css" />
+      <URL value="@../styles/btn-delete-update.css" />
+      <URL value="@../styles/user.css" />
+   </stylesheets>
+</Pane>
