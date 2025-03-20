@@ -24,12 +24,16 @@ public class DashBoardFormController {
 
     @FXML
     void btnLogoutOnMouseClicked(MouseEvent event) {
-        NavigationUtil.getNewStage(
-                (Stage)dashboardPane.getScene().getWindow(),
-                DashBoardFormController.class,
-                "Login",
-                "/view/login.fxml"
-                );
+        try {
+            NavigationUtil.getNewStage(
+                    (Stage)dashboardPane.getScene().getWindow(),
+                    DashBoardFormController.class,
+                    "Login",
+                    "/view/login.fxml"
+                    );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
