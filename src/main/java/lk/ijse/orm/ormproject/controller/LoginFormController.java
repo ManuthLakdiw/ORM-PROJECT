@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import lk.ijse.orm.ormproject.bo.BoFactory;
 import lk.ijse.orm.ormproject.bo.BoTypes;
 import lk.ijse.orm.ormproject.bo.custom.UserBo;
+import lk.ijse.orm.ormproject.exception.InvalidCredentialException;
 import lk.ijse.orm.ormproject.exception.MissingFieldException;
 import lk.ijse.orm.ormproject.util.AlertUtil;
 import lk.ijse.orm.ormproject.util.NavigationUtil;
@@ -92,7 +93,7 @@ public class LoginFormController implements Initializable {
                 }
 
             }else {
-//                AlertUtil.setInformationAlert(LoginFormController.class , "" , "UserName or Password doesn't match" , false);
+                AlertUtil.setInformationAlert(LoginFormController.class , "" , new InvalidCredentialException("Invalid username or password. Please try again.").getMessage(), false);
                 RegexUtil.setErrorStyle(true ,txtPassword,txtUserName,txtShowPw);
                 txtPassword.clear();
                 txtUserName.clear();
