@@ -69,6 +69,9 @@ public class LoginFormController implements Initializable {
             if (isVerified) {
 //                AlertUtil.setInformationAlert(LoginFormController.class , "" , "Verified" , true);
 
+                String userRole = user.getUserRoleByName(txtUserName.getText());
+
+
                 NavigationUtil.getNewStage(
                         (Stage) logPane.getScene().getWindow(),
                         LoginFormController.class
