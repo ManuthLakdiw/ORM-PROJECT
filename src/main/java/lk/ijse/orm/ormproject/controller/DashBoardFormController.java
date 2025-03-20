@@ -7,6 +7,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lk.ijse.orm.ormproject.util.NavigationUtil;
+import lombok.Setter;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class DashBoardFormController {
 
@@ -15,6 +20,9 @@ public class DashBoardFormController {
 
     @FXML
     private Button btnUser;
+
+    @FXML
+    private Button btnCheck;
 
     @FXML
     private AnchorPane dashboardPane;
