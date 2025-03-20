@@ -23,6 +23,7 @@ public interface UserBo extends SuperBo {
     boolean deleteUser(String id) throws Exception;
     boolean updateUser(UserDto userDto) throws Exception;
     String getUserNameById(String id) throws Exception;
+    String getUserRoleByName(String userName) throws Exception;
 
 
 }
