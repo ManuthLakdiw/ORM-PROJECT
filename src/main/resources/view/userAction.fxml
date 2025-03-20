@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="462.0" prefWidth="463.0" styleClass="pane" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.orm.ormproject.controller.userActionFormController">
+<AnchorPane prefHeight="462.0" prefWidth="463.0" styleClass="pane" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.orm.ormproject.controller.UserActionFormController">
    <children>
       <Label fx:id="lblTitle" alignment="CENTER" layoutX="152.0" layoutY="14.0" prefHeight="20.0" prefWidth="160.0" text="USER REGISTRATION" textAlignment="CENTER" textFill="WHITE">
          <font>
