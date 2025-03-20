@@ -1,0 +1,79 @@
+.btn-add-user{
+    -fx-pref-width: 150px;
+    -fx-border-width: 0.2px;
+    -fx-border-color: white;
+    -fx-border-radius: 5px;
+    -fx-background-color: #1e9cea;
+    -fx-font-family: Arial;
+    -fx-font-weight: bold;
+    -fx-font-size: 17px;
+    -fx-fill: white;
+}
+
+.btn-add-user:hover{
+    -fx-background-color: #1486cd;
+    -fx-cursor: hand;
+}
+
+.usr-input{
+    -fx-border-color: #1486cd;
+    -fx-border-width: 0.3px;
+    -fx-background-color: transparent;
+    -fx-border-radius: 5px;
+    -fx-font-size: 14px;
+    -fx-letter-spacing: 10px;
+    -fx-text-fill: #24a0ed;
+    -fx-padding: 0px 0px 0px 5px;
+
+}
+
+.usr-input:focused {
+    -fx-border-radius: 5px;
+    -fx-border-width: 0.4px;
+    -fx-border-color: #24a0ed;
+}
+
+
+.cmb{
+    -fx-background-insets: 0;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #24a0ed;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #24a0ed;
+    -fx-text-fill: black;
+}
+
+.btn{
+    -fx-pref-width: 80px;
+    -fx-border-radius: 5px;
+
+}
+
+.btn:hover{
+    -fx-cursor: hand;
+
+}
+.btn-usr-save{
+    -fx-border-color: #24a0ed;
+    -fx-background-color: black;
+    -fx-pref-height: 40px;
+    -fx-text-fill: #24a0ed;
+    -fx-font-weight: bold;
+    -fx-font-family: Arial;
+}
+
+
+.btn-clear{
+    -fx-background-color: rgba(128, 128, 128, 0.3);
+    -fx-pref-height: 30px;
+    -fx-text-fill: white;
+    -fx-font-weight: normal;
+    -fx-font-family: Arial;
+}
+
+
