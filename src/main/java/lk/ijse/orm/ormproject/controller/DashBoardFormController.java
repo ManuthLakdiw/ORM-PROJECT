@@ -41,4 +41,8 @@ public class DashBoardFormController {
         NavigationUtil.loadPane(DashBoardFormController.class ,navPane, "user", "/view/user.fxml");
     }
 
+
+    public void manageRoleTask(boolean visible) {
+        btnCheck.setVisible(visible);
+    }
 }
