@@ -79,7 +79,7 @@ public class UserBoImpl implements UserBo {
         for (User user : userLists) {
             if (user.getUsername().equals(username)) {
                 notUser = false;
-                throw new UserNameDuplicateException("This username is already taken. Please try a different one.");
+                throw new UserNameDuplicateException("Duplicate Entry!!!\nThis username is already taken. Please try a different one.");
             }
         }
         return notUser;
