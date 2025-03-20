@@ -22,6 +22,10 @@ public class DashBoardFormController {
     @FXML
     private Pane navPane;
 
+
+    @Setter
+    private LoginFormController loginFormController;
+
     @FXML
     void btnLogoutOnMouseClicked(MouseEvent event) {
         try {
