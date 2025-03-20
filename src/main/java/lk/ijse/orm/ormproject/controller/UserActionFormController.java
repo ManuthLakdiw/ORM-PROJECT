@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import lk.ijse.orm.ormproject.bo.BoFactory;
 import lk.ijse.orm.ormproject.bo.BoTypes;
 import lk.ijse.orm.ormproject.bo.custom.UserBo;
+import lk.ijse.orm.ormproject.exception.MissingFieldException;
 import lk.ijse.orm.ormproject.dto.UserDto;
 import lk.ijse.orm.ormproject.util.AlertUtil;
 import lombok.Setter;
@@ -106,7 +107,12 @@ public class UserActionFormController implements Initializable {
                     AlertUtil.setInformationAlert(UserActionFormController.class, "", e.getMessage(), false);
                 }
             } else {
-                AlertUtil.setInformationAlert(UserActionFormController.class, "", "Please fill all the fields!", true);
+                AlertUtil.setInformationAlert(
+                        UserActionFormController.class,
+                        "",
+                        new MissingFieldException("Required field is missing. Please provide all necessary information.").getMessage(),
+                        true
+                );
             }
         }
 
@@ -147,7 +153,12 @@ public class UserActionFormController implements Initializable {
                     AlertUtil.setInformationAlert(UserActionFormController.class, "", e.getMessage(), false);
                 }
             } else {
-                AlertUtil.setInformationAlert(UserActionFormController.class, "", "Please fill all the fields!", true);
+                AlertUtil.setInformationAlert(
+                        UserActionFormController.class,
+                        "",
+                        new MissingFieldException("Required field is missing.\nPlease provide all necessary information.").getMessage(),
+                        true
+                );
             }
         }
     }

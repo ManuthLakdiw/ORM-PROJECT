@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import lk.ijse.orm.ormproject.bo.BoFactory;
 import lk.ijse.orm.ormproject.bo.BoTypes;
 import lk.ijse.orm.ormproject.bo.custom.UserBo;
-import lk.ijse.orm.ormproject.dto.UserDto;
+import lk.ijse.orm.ormproject.exception.MissingFieldException;
 import lk.ijse.orm.ormproject.util.AlertUtil;
 import lk.ijse.orm.ormproject.util.NavigationUtil;
 import javafx.scene.layout.AnchorPane;
@@ -100,7 +100,7 @@ public class LoginFormController implements Initializable {
 
             }
         }else {
-            AlertUtil.setInformationAlert(LoginFormController.class , "" , "Please fill both Fields!" , true);
+            AlertUtil.setInformationAlert(LoginFormController.class , "" , new MissingFieldException("Please enter both username and password to continue").getMessage(), true);
         }
 
 
