@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  * @project ORM-PROJECT
  * @github https://github.com/ManuthLakdiw
  */
-public class userActionFormController implements Initializable {
+public class UserActionFormController implements Initializable {
 
     UserBo userBo = BoFactory.getInstance().getBo(BoTypes.USER);
 
@@ -95,18 +95,18 @@ public class userActionFormController implements Initializable {
 
                         boolean isSaved = userBo.saveUser(dto);
                         if (isSaved) {
-                            AlertUtil.setInformationAlert(userActionFormController.class, "", "User saved successfully!", true);
+                            AlertUtil.setInformationAlert(UserActionFormController.class, "", "User saved successfully!", true);
                             refreshFields();
                             userTableFormController.loadUserTable();
                         } else {
-                            AlertUtil.setInformationAlert(userActionFormController.class, "", "Can't save user", false);
+                            AlertUtil.setInformationAlert(UserActionFormController.class, "", "Can't save user", false);
                         }
                     }
                 } catch (Exception e) {
-                    AlertUtil.setInformationAlert(userActionFormController.class, "", e.getMessage(), false);
+                    AlertUtil.setInformationAlert(UserActionFormController.class, "", e.getMessage(), false);
                 }
             } else {
-                AlertUtil.setInformationAlert(userActionFormController.class, "", "Please fill all the fields!", true);
+                AlertUtil.setInformationAlert(UserActionFormController.class, "", "Please fill all the fields!", true);
             }
         }
 
@@ -134,20 +134,20 @@ public class userActionFormController implements Initializable {
                         if (isUpdated) {
                             refreshFields();
                             userTableFormController.loadUserTable();
-                            AlertUtil.setInformationAlert(userActionFormController.class, "", "User updated successfully!", true);
+                            AlertUtil.setInformationAlert(UserActionFormController.class, "", "User updated successfully!", true);
                             Stage stage = (Stage) btnAction.getScene().getWindow();
                             stage.close();
 
                         } else {
-                            AlertUtil.setInformationAlert(userActionFormController.class, "", "Can't update user", false);
+                            AlertUtil.setInformationAlert(UserActionFormController.class, "", "Can't update user", false);
                         }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    AlertUtil.setInformationAlert(userActionFormController.class, "", e.getMessage(), false);
+                    AlertUtil.setInformationAlert(UserActionFormController.class, "", e.getMessage(), false);
                 }
             } else {
-                AlertUtil.setInformationAlert(userActionFormController.class, "", "Please fill all the fields!", true);
+                AlertUtil.setInformationAlert(UserActionFormController.class, "", "Please fill all the fields!", true);
             }
         }
     }

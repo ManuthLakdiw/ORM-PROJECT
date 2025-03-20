@@ -24,7 +24,7 @@ public class UserTableFormController implements Initializable {
 
     UserBo userBo = BoFactory.getInstance().getBo(BoTypes.USER);
 
-    private userActionFormController userActionFormController;
+    private UserActionFormController userActionFormController;
 
 
     @FXML
@@ -55,7 +55,7 @@ public class UserTableFormController implements Initializable {
 
     @FXML
     void btnAddOnMouseClicked(MouseEvent event) {
-        userActionFormController userActionFormController = NavigationUtil.loadSubStage(
+        UserActionFormController userActionFormController = NavigationUtil.loadSubStage(
                 UserTableFormController.class,
                 "/view/userAction.fxml",
                 "user registration",
@@ -116,7 +116,7 @@ public class UserTableFormController implements Initializable {
 
     private void setUpdateButtonAction(Button updateBtn, UserDto userDto) {
         updateBtn.setOnAction(event -> {
-            userActionFormController userActionFormController = NavigationUtil.loadSubStage(
+            UserActionFormController userActionFormController = NavigationUtil.loadSubStage(
                     UserTableFormController.class,
                     "/view/userAction.fxml",
                     "update user",
@@ -150,9 +150,9 @@ public class UserTableFormController implements Initializable {
                                 break;
                             }
                         }
-                        AlertUtil.setInformationAlert(userActionFormController.class, "", "User deleted successfully", true);
+                        AlertUtil.setInformationAlert(UserActionFormController.class, "", "User deleted successfully", true);
                     } else {
-                        AlertUtil.setInformationAlert(userActionFormController.class, "", "Failed to delete user", false);
+                        AlertUtil.setInformationAlert(UserActionFormController.class, "", "Failed to delete user", false);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
