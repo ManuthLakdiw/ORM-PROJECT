@@ -17,7 +17,6 @@ import lk.ijse.orm.ormproject.util.AlertUtil;
 import lombok.Setter;
 
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -26,7 +25,7 @@ import java.util.ResourceBundle;
  * @project ORM-PROJECT
  * @github https://github.com/ManuthLakdiw
  */
-public class AddUserFormController implements Initializable {
+public class userActionFormController implements Initializable {
 
     UserBo userBo = BoFactory.getInstance().getBo(BoTypes.USER);
 
@@ -66,7 +65,7 @@ public class AddUserFormController implements Initializable {
 
 
     @Setter
-    private UserFormController userFormController;
+    private UserTableFormController userTableFormController;
 
 
     @FXML
@@ -96,18 +95,18 @@ public class AddUserFormController implements Initializable {
 
                         boolean isSaved = userBo.saveUser(dto);
                         if (isSaved) {
-                            AlertUtil.setInformationAlert(AddUserFormController.class, "", "User saved successfully!", true);
+                            AlertUtil.setInformationAlert(userActionFormController.class, "", "User saved successfully!", true);
                             refreshFields();
-                            userFormController.loadUserTable();
+                            userTableFormController.loadUserTable();
                         } else {
-                            AlertUtil.setInformationAlert(AddUserFormController.class, "", "Can't save user", false);
+                            AlertUtil.setInformationAlert(userActionFormController.class, "", "Can't save user", false);
                         }
                     }
                 } catch (Exception e) {
-                    AlertUtil.setInformationAlert(AddUserFormController.class, "", e.getMessage(), false);
+                    AlertUtil.setInformationAlert(userActionFormController.class, "", e.getMessage(), false);
                 }
             } else {
-                AlertUtil.setInformationAlert(AddUserFormController.class, "", "Please fill all the fields!", true);
+                AlertUtil.setInformationAlert(userActionFormController.class, "", "Please fill all the fields!", true);
             }
         }
 
@@ -134,21 +133,21 @@ public class AddUserFormController implements Initializable {
                         boolean isUpdated = userBo.updateUser(dto);
                         if (isUpdated) {
                             refreshFields();
-                            userFormController.loadUserTable();
-                            AlertUtil.setInformationAlert(AddUserFormController.class, "", "User updated successfully!", true);
+                            userTableFormController.loadUserTable();
+                            AlertUtil.setInformationAlert(userActionFormController.class, "", "User updated successfully!", true);
                             Stage stage = (Stage) btnAction.getScene().getWindow();
                             stage.close();
 
                         } else {
-                            AlertUtil.setInformationAlert(AddUserFormController.class, "", "Can't update user", false);
+                            AlertUtil.setInformationAlert(userActionFormController.class, "", "Can't update user", false);
                         }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    AlertUtil.setInformationAlert(AddUserFormController.class, "", e.getMessage(), false);
+                    AlertUtil.setInformationAlert(userActionFormController.class, "", e.getMessage(), false);
                 }
             } else {
-                AlertUtil.setInformationAlert(AddUserFormController.class, "", "Please fill all the fields!", true);
+                AlertUtil.setInformationAlert(userActionFormController.class, "", "Please fill all the fields!", true);
             }
         }
     }

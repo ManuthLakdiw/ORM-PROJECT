@@ -3,14 +3,11 @@ package lk.ijse.orm.ormproject.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import lk.ijse.orm.ormproject.bo.BoFactory;
 import lk.ijse.orm.ormproject.bo.BoTypes;
 import lk.ijse.orm.ormproject.bo.custom.UserBo;
@@ -19,17 +16,15 @@ import lk.ijse.orm.ormproject.dto.tm.UserTm;
 import lk.ijse.orm.ormproject.util.AlertUtil;
 import lk.ijse.orm.ormproject.util.NavigationUtil;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class UserFormController implements Initializable {
+public class UserTableFormController implements Initializable {
 
     UserBo userBo = BoFactory.getInstance().getBo(BoTypes.USER);
 
-    private AddUserFormController addUserFormController;
+    private userActionFormController userActionFormController;
 
 
     @FXML
@@ -60,17 +55,17 @@ public class UserFormController implements Initializable {
 
     @FXML
     void btnAddOnMouseClicked(MouseEvent event) {
-        AddUserFormController addUserFormController = NavigationUtil.loadSubStage(
-                UserFormController.class,
-                "/view/addUser.fxml",
+        userActionFormController userActionFormController = NavigationUtil.loadSubStage(
+                UserTableFormController.class,
+                "/view/userAction.fxml",
                 "user registration",
                 btnAdd.getScene().getWindow()
 
         );
 
-        if (addUserFormController != null) {
-            addUserFormController.setUserFormController(this);
-            this.addUserFormController = addUserFormController;
+        if (userActionFormController != null) {
+            userActionFormController.setUserTableFormController(this);
+            this.userActionFormController = userActionFormController;
 
         }
 
@@ -121,20 +116,20 @@ public class UserFormController implements Initializable {
 
     private void setUpdateButtonAction(Button updateBtn, UserDto userDto) {
         updateBtn.setOnAction(event -> {
-            AddUserFormController addUserFormController = NavigationUtil.loadSubStage(
-                    UserFormController.class,
-                    "/view/addUser.fxml",
+            userActionFormController userActionFormController = NavigationUtil.loadSubStage(
+                    UserTableFormController.class,
+                    "/view/userAction.fxml",
                     "update user",
                     updateBtn.getScene().getWindow()
             );
 
 
-            if (addUserFormController != null) {
-                addUserFormController.setUserData(userDto);
-                addUserFormController.setActionButtonText("Update");
-                addUserFormController.setLblTitle("USER UPDATE");
-                addUserFormController.setUserFormController(this);
-                this.addUserFormController = addUserFormController;
+            if (userActionFormController != null) {
+                userActionFormController.setUserData(userDto);
+                userActionFormController.setActionButtonText("Update");
+                userActionFormController.setLblTitle("USER UPDATE");
+                userActionFormController.setUserTableFormController(this);
+                this.userActionFormController = userActionFormController;
             }
         });
 
@@ -155,9 +150,9 @@ public class UserFormController implements Initializable {
                                 break;
                             }
                         }
-                        AlertUtil.setInformationAlert(AddUserFormController.class, "", "User deleted successfully", true);
+                        AlertUtil.setInformationAlert(userActionFormController.class, "", "User deleted successfully", true);
                     } else {
-                        AlertUtil.setInformationAlert(AddUserFormController.class, "", "Failed to delete user", false);
+                        AlertUtil.setInformationAlert(userActionFormController.class, "", "Failed to delete user", false);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
