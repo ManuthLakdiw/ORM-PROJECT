@@ -1,7 +1,7 @@
 package lk.ijse.orm.ormproject.bo.custom.impl;
 
 import lk.ijse.orm.ormproject.bo.custom.UserBo;
-import lk.ijse.orm.ormproject.bo.exception.UserNameDuplicateException;
+import lk.ijse.orm.ormproject.exception.UserNameDuplicateException;
 import lk.ijse.orm.ormproject.dao.DaoFactory;
 import lk.ijse.orm.ormproject.dao.DaoTypes;
 import lk.ijse.orm.ormproject.dao.custom.UserDao;
