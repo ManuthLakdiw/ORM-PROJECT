@@ -1,4 +1,4 @@
-package lk.ijse.orm.ormproject.bo.exception;
+package lk.ijse.orm.ormproject.exception;
 
 /**
  * @author manuthlakdiv
