@@ -1,16 +1,6 @@
-.login-pane{
-    -fx-background-color: black;
-}
-
 .text-f {
     -fx-pref-width: 250px;
     -fx-pref-height: 45px;
-    -fx-border-color: white;
-    -fx-background-color: transparent;
-    -fx-border-radius: 5px;
-    -fx-text-fill: #24a0ed;
-    -fx-font-size: 14px;
-    -fx-letter-spacing: 10px;
 }
 
 .check-b > .box {
