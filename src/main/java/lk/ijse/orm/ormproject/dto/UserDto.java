@@ -13,10 +13,10 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class UserDto {
     private String id;
     private String name;
     private String password;
     private String role;
-    private String email;
 }
