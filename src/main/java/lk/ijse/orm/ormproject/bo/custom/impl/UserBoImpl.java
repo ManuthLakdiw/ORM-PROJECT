@@ -52,7 +52,7 @@ public class UserBoImpl implements UserBo {
     @Override
     public boolean verifyUser(String username, String password) throws Exception {
            Optional<User> user = userDao.getUserByUserName(username);
-           if (user.isPresent()) {
+           if (user.isPresent() && username.equals(user.get().getUsername())) {
                return BCrypt.checkpw(password, user.get().getPassword());
 
            }
