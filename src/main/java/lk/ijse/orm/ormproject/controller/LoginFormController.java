@@ -8,9 +8,16 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import lk.ijse.orm.ormproject.bo.BoFactory;
 import lk.ijse.orm.ormproject.bo.BoTypes;
 import lk.ijse.orm.ormproject.bo.custom.UserBo;
+import lk.ijse.orm.ormproject.dto.UserDto;
+import lk.ijse.orm.ormproject.util.AlertUtil;
+import lk.ijse.orm.ormproject.util.NavigationUtil;
+import javafx.scene.layout.AnchorPane;
+import lk.ijse.orm.ormproject.util.RegexUtil;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,26 +39,59 @@ public class LoginFormController implements Initializable {
     private TextField txtShowPw;
 
     @FXML
+    private AnchorPane logPane;
+
+    @FXML
     private TextField txtUserName;
 
 
     UserBo user = BoFactory.getInstance().getBo(BoTypes.USER);
 
 
-    private String userName;
-    private String password;
-
-
-
     @FXML
-    void btnLoginOnMouseClicked(MouseEvent event) {
-        userName = txtUserName.getText();
-        password = txtShowPw.getText();
+    void btnLoginOnMouseClicked(MouseEvent event) throws Exception {
 
-        boolean isVerified = user.verifyUser(userName, password);
+        NavigationUtil.getNewStage(
+                (Stage) logPane.getScene().getWindow(),
+                LoginFormController.class
+                , "Dashboard"
+                , "/view/dashBoard.fxml"
+        );
 
 
+//        if (!(txtUserName.getText().isEmpty() || txtPassword.getText().isEmpty())) {
+//            boolean isVerified = user.verifyUser(txtUserName.getText(), txtShowPw.getText());
+//            if (isVerified) {
+////                AlertUtil.setInformationAlert(LoginFormController.class , "" , "Verified" , true);
+//
+//                NavigationUtil.getNewStage(
+//                        (Stage) logPane.getScene().getWindow(),
+//                        LoginFormController.class
+//                        , "Dashboard"
+//                        , "/view/dashBoard.fxml"
+//                );
+//
+//            }else {
+////                AlertUtil.setInformationAlert(LoginFormController.class , "" , "UserName or Password doesn't match" , false);
+//                RegexUtil.setErrorStyle(true ,txtPassword,txtUserName,txtShowPw);
+//                txtPassword.clear();
+//                txtUserName.clear();
+//                txtShowPw.clear();
+//
+//            }
+//        }else {
+//            AlertUtil.setInformationAlert(LoginFormController.class , "" , "Please fill both Fields!" , true);
+//        }
 
+
+//
+//        UserDto dto = new UserDto();
+//        dto.setId("U001");
+//        dto.setName("ma");
+//        dto.setPassword("12");
+//        dto.setRole("admin");
+//        boolean check = user.saveUser(dto);
+//        System.out.println(check);
 
 
     }
@@ -72,11 +112,20 @@ public class LoginFormController implements Initializable {
     @FXML
     void txtPasswordOnKeyTyped(KeyEvent event) {
         txtShowPw.setText(txtPassword.getText());
+        RegexUtil.resetStyle(txtPassword , txtUserName , txtShowPw);
     }
 
     @FXML
     void txtShowPwOnKeyTyped(KeyEvent event) {
         txtPassword.setText(txtShowPw.getText());
+        RegexUtil.resetStyle(txtPassword , txtUserName , txtShowPw);
+
+    }
+
+    @FXML
+    void txtUserNameOnKeyTyped(KeyEvent event) {
+        RegexUtil.resetStyle(txtPassword , txtUserName , txtShowPw);
+
     }
 
     @Override
