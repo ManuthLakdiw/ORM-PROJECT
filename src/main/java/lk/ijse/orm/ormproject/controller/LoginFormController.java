@@ -26,6 +26,8 @@ public class LoginFormController implements Initializable {
 
 
 
+
+
     @FXML
     private Button btnLogin;
 
@@ -46,6 +48,9 @@ public class LoginFormController implements Initializable {
 
 
     UserBo user = BoFactory.getInstance().getBo(BoTypes.USER);
+
+
+    private DashBoardFormController dashboardFormController;
 
 
     @FXML
@@ -70,6 +75,18 @@ public class LoginFormController implements Initializable {
                         , "Dashboard"
                         , "/view/dashBoard.fxml"
                 );
+
+                DashBoardFormController dashBoardFormController = NavigationUtil.getController();
+
+                if (dashBoardFormController != null) {
+                    if (userRole.equalsIgnoreCase("Receptionist")) {
+                        dashBoardFormController.manageRoleTask(false);
+
+                    }
+                    dashBoardFormController.setLoginFormController(this);
+                    this.dashboardFormController = dashBoardFormController;
+
+                }
 
             }else {
 //                AlertUtil.setInformationAlert(LoginFormController.class , "" , "UserName or Password doesn't match" , false);
