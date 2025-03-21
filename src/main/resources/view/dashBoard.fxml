@@ -21,12 +21,17 @@
                   <Font size="31.0" />
                </font>
             </Button>
+            <Button fx:id="btnCheck" mnemonicParsing="false" prefHeight="127.0" prefWidth="290.0" text="check" />
             <Button fx:id="btnLogout" mnemonicParsing="false" onMouseClicked="#btnLogoutOnMouseClicked" prefHeight="82.0" prefWidth="290.0" text="Log Out">
                <font>
                   <Font size="31.0" />
                </font>
             </Button>
-            <Button fx:id="btnCheck" mnemonicParsing="false" prefHeight="127.0" prefWidth="290.0" text="Fuck" />
+            <Button fx:id="btnProgramme" mnemonicParsing="false" onMouseClicked="#btnProgrammeOnMouseClicked" prefHeight="95.0" prefWidth="321.0" text="programme">
+               <font>
+                  <Font size="44.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
       <Label layoutX="25.0" layoutY="25.0" prefHeight="61.0" prefWidth="792.0" text="DashBoard - Medical Health Center" textFill="WHITE">
