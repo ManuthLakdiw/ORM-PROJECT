@@ -1,5 +1,6 @@
 package lk.ijse.orm.ormproject.dao;
 
+import lk.ijse.orm.ormproject.dao.custom.impl.ProgrammeDaoImpl;
 import lk.ijse.orm.ormproject.dao.custom.impl.UserDaoImpl;
 
 /**
@@ -19,6 +20,7 @@ public class DaoFactory {
     public <T extends SuperDao> T getDao(DaoTypes daoType) {
         return switch (daoType){
             case USER -> (T) new UserDaoImpl();
+            case PROGRAMME -> (T) new ProgrammeDaoImpl();
         };
     }
 }

@@ -7,5 +7,5 @@ package lk.ijse.orm.ormproject.dao;
  * @github https://github.com/ManuthLakdiw
  */
 public enum DaoTypes {
-    USER
+    USER,PROGRAMME
 }
