@@ -90,7 +90,6 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Optional<User> findById(String pk) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
-
         User user = session.find(User.class, pk);
         return Optional.ofNullable(user);
 
