@@ -1,5 +1,6 @@
 package lk.ijse.orm.ormproject.bo;
 
+import lk.ijse.orm.ormproject.bo.custom.impl.ProgrammeBoImpl;
 import lk.ijse.orm.ormproject.bo.custom.impl.UserBoImpl;
 
 /**
@@ -23,6 +24,7 @@ public class BoFactory {
 
         return switch (boType){
             case USER -> (T) new UserBoImpl();
+            case PROGRAMME -> (T) new ProgrammeBoImpl();
         };
     }
 

@@ -7,5 +7,5 @@ package lk.ijse.orm.ormproject.bo;
  * @github https://github.com/ManuthLakdiw
  */
 public enum BoTypes {
-    USER
+    USER,PROGRAMME
 }
