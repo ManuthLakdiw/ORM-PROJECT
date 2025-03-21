@@ -115,13 +115,17 @@ public class UserBoImpl implements UserBo {
 
     @Override
     public String getUserNameById(String id) throws Exception {
-        List<User> userList = userDao.getAll();
-
-        for (User user : userList) {
-            if (id.equals(user.getId())) {
-                return user.getUsername();
-            }
+        Optional<User> user = userDao.findById(id);
+        if (user.isPresent()) {
+            return user.get().getUsername();
         }
+//        List<User> userList = userDao.getAll();
+//
+//        for (User user : userList) {
+//            if (id.equals(user.getId())) {
+//                return user.getUsername();
+//            }
+//        }
         return null;
     }
 
