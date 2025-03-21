@@ -1,5 +1,6 @@
 package lk.ijse.orm.ormproject.config;
 
+import lk.ijse.orm.ormproject.entity.Programme;
 import lk.ijse.orm.ormproject.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -31,6 +32,7 @@ public class FactoryConfiguration {
 
         cfg.setProperties(properties);
         cfg.addAnnotatedClass(User.class);
+        cfg.addAnnotatedClass(Programme.class);
         sessionFactory = cfg.buildSessionFactory();
     }
 
