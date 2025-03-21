@@ -73,16 +73,25 @@ public class UserBoImpl implements UserBo {
     }
 
     public boolean validUserName(String username) throws Exception {
-        boolean notUser = true;
-        List<User> userLists = userDao.getAll();
-
-        for (User user : userLists) {
-            if (user.getUsername().equals(username)) {
-                notUser = false;
-                throw new UserNameDuplicateException("Duplicate Entry!!!\nThis username is already taken. Please try a different one.");
-            }
+        boolean valid = true;
+        Optional<User> userByUserName = userDao.getUserByUserName(username);
+        if (userByUserName.isPresent()) {
+            valid = false;
+            throw new UserNameDuplicateException("Duplicate Entry!!!\nThis username is already taken. Please try a different one.");
+        } else {
+            return valid;
         }
-        return notUser;
+//        boolean notUser = true;
+//        List<User> userLists = userDao.getAll();
+//
+//        for (User user : userLists) {
+//            if (user.getUsername().equals(username)) {
+//                notUser = false;
+//                throw new UserNameDuplicateException("Duplicate Entry!!!\nThis username is already taken. Please try a different one.");
+//            }
+//        }
+//        return notUser;
+//        return false;
     }
 
     @Override
