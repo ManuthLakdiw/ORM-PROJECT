@@ -131,12 +131,19 @@ public class UserBoImpl implements UserBo {
 
     @Override
     public String getUserRoleByName(String userName) throws Exception {
-        List<User> allUsers = userDao.getAll();
-        for (User user : allUsers) {
-            if (user.getUsername().equals(userName)) {
-                return user.getRole();
-            }
+        Optional<User> user = userDao.getUserByUserName(userName);
+        if (user.isPresent()) {
+            return user.get().getRole();
         }
         return null;
+
+
+//        List<User> allUsers = userDao.getAll();
+//        for (User user : allUsers) {
+//            if (user.getUsername().equals(userName)) {
+//                return user.getRole();
+//            }
+//        }
+//        return null;
     }
 }
