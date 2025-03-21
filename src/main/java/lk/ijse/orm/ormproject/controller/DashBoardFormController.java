@@ -23,6 +23,9 @@ public class DashBoardFormController {
     private Button btnCheck;
 
     @FXML
+    private Button btnProgramme;
+
+    @FXML
     private AnchorPane dashboardPane;
 
     @FXML
@@ -49,6 +52,12 @@ public class DashBoardFormController {
     @FXML
     void btnUserOnMouseClicked(MouseEvent event) {
         NavigationUtil.loadPane(DashBoardFormController.class ,navPane, "user", "/view/userTable.fxml");
+    }
+
+
+    @FXML
+    void btnProgrammeOnMouseClicked(MouseEvent event) {
+        NavigationUtil.loadPane(DashBoardFormController.class ,navPane, "Programme", "/view/programmeTable.fxml");
     }
 
 
