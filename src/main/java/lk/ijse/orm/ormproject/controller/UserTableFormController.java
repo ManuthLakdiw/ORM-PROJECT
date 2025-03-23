@@ -144,12 +144,7 @@ public class UserTableFormController implements Initializable {
                 try {
                     boolean isDeleted = userBo.deleteUser(userDto.getId());
                     if (isDeleted) {
-                        for (int i = 0; i < tblUser.getItems().size(); i++) {
-                            if (tblUser.getItems().get(i).getId().equals(userDto.getId())) {
-                                tblUser.getItems().remove(i);
-                                break;
-                            }
-                        }
+                        loadUserTable();
                         AlertUtil.setInformationAlert(UserActionFormController.class, "", "User deleted successfully", true);
                     } else {
                         AlertUtil.setInformationAlert(UserActionFormController.class, "", "Failed to delete user", false);
