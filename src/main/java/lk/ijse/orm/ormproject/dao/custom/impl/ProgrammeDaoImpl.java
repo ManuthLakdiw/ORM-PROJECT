@@ -92,6 +92,6 @@ public class ProgrammeDaoImpl implements ProgrammeDao {
         Session session = FactoryConfiguration.getInstance().getSession();
         String lastPK = session.createQuery("SELECT p.id from Programme p order by p.id desc", String.class).setMaxResults(1).uniqueResult();
         session.close();
-        return Optional.of(lastPK);
+        return Optional.ofNullable(lastPK);
     }
 }

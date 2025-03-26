@@ -101,7 +101,7 @@ public class UserDaoImpl implements UserDao {
         Session session = FactoryConfiguration.getInstance().getSession();
         String lastPK = session.createQuery("SELECT u.id from User u order by u.id desc", String.class).setMaxResults(1).uniqueResult();
         session.close();
-        return Optional.of(lastPK);
+        return Optional.ofNullable(lastPK);
     }
 
     @Override
