@@ -9,6 +9,7 @@ module lk.ijse.orm.ormproject {
     requires java.desktop;
     requires com.jfoenix;
     requires javafx.controls;
+    requires java.mail;
 
     opens lk.ijse.orm.ormproject.controller to javafx.fxml;
     exports lk.ijse.orm.ormproject;
