@@ -3,6 +3,8 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -34,11 +36,16 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="25.0" layoutY="25.0" prefHeight="61.0" prefWidth="792.0" text="DashBoard - Medical Health Center" textFill="WHITE">
+      <Pane fx:id="navPane" layoutX="329.0" layoutY="104.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1035.0" style="-fx-background-color: gray;" />
+      <Label layoutX="143.0" layoutY="38.0" prefHeight="17.0" prefWidth="166.0" text="My Profile" textFill="WHITE">
          <font>
-            <Font size="42.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Pane fx:id="navPane" layoutX="329.0" layoutY="104.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1035.0" style="-fx-background-color: gray;" />
+      <ImageView fitHeight="58.0" fitWidth="58.0" layoutX="77.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../Downloads/avatar-7964945_640.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

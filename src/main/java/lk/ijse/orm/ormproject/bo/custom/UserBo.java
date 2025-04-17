@@ -1,9 +1,7 @@
 package lk.ijse.orm.ormproject.bo.custom;
 
 import lk.ijse.orm.ormproject.bo.SuperBo;
-import lk.ijse.orm.ormproject.bo.exception.UserNameDuplicateException;
 import lk.ijse.orm.ormproject.dto.UserDto;
-import lk.ijse.orm.ormproject.entity.User;
 
 import java.util.List;
 
@@ -24,6 +22,7 @@ public interface UserBo extends SuperBo {
     boolean updateUser(UserDto userDto) throws Exception;
     String getUserNameById(String id) throws Exception;
     String getUserRoleByName(String userName) throws Exception;
+    String getUserEmailByUserName(String username) throws Exception;
 
 
 }

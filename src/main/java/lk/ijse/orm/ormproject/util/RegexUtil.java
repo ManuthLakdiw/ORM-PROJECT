@@ -1,7 +1,6 @@
 package lk.ijse.orm.ormproject.util;
 
 import javafx.animation.TranslateTransition;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import javafx.util.Duration;
 
@@ -26,7 +25,7 @@ public class RegexUtil {
 
 
     public static <T extends TextInputControl> void setErrorStyle(boolean shakeEffect , T... inputNodes) {
-        String errorStyle = "-fx-border-color: red; -fx-border-width: 1px;";
+        String errorStyle = "-fx-border-color: red;";
         for (T node : inputNodes) {
             node.setStyle(errorStyle);
             if (shakeEffect) {
@@ -35,13 +34,15 @@ public class RegexUtil {
         }
     }
 
-    public static<T extends TextInputControl> void resetStyle(T... inputNodes) {
-        String resetStyle = "-fx-border-color: white;";
+    public static<T extends TextInputControl> void resetErrorStyle(T... inputNodes) {
+        String resetStyle = "-fx-border-color: #1486cd;";
         for (T node : inputNodes) {
             node.setStyle(resetStyle);
         }
 
     }
+
+
 
 
 }

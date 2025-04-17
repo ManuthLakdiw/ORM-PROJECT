@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="462.0" prefWidth="463.0" styleClass="pane" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.orm.ormproject.controller.UserActionFormController">
+<AnchorPane prefHeight="523.0" prefWidth="463.0" styleClass="pane" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.orm.ormproject.controller.UserActionFormController">
    <children>
       <Label fx:id="lblTitle" alignment="CENTER" layoutX="152.0" layoutY="14.0" prefHeight="20.0" prefWidth="160.0" text="USER REGISTRATION" textAlignment="CENTER" textFill="WHITE">
          <font>
@@ -30,26 +30,26 @@
          </styleClass></Label>
       <Line endX="100.0" layoutX="232.0" layoutY="38.0" startX="-100.0" stroke="#1486cd" style="-fx-opacity: 0.5;" />
       <Label layoutX="14.0" layoutY="62.0" text="ID" textFill="WHITE" />
-      <PasswordField fx:id="txtPassword" layoutX="14.0" layoutY="323.0" onKeyTyped="#txtPasswordOnKeyTyped" prefHeight="34.0" prefWidth="192.0" styleClass="usr-input" />
-      <PasswordField fx:id="txtConfirmPassword" layoutX="251.0" layoutY="323.0" onKeyTyped="#txtConfirmPasswordOnKeyTyped" prefHeight="34.0" prefWidth="192.0" styleClass="usr-input" />
-      <TextField fx:id="txtUserName" layoutX="14.0" layoutY="198.0" prefHeight="34.0" prefWidth="192.0" styleClass="usr-input" />
-      <Label layoutX="14.0" layoutY="176.0" text="User Name" textFill="WHITE" />
-      <Label layoutX="14.0" layoutY="301.0" text="Password" textFill="WHITE" />
-      <Label layoutX="251.0" layoutY="301.0" text="Confirm Password" textFill="WHITE" />
-      <Label layoutX="251.0" layoutY="176.0" text="Role" textFill="WHITE" />
-      <Button fx:id="btnAction" layoutX="363.0" layoutY="409.0" mnemonicParsing="false" onMouseClicked="#btnActionOnMouseClicked" text="Save">
+      <PasswordField fx:id="txtPassword" layoutX="14.0" layoutY="383.0" onKeyTyped="#txtPasswordOnKeyTyped" prefHeight="34.0" prefWidth="192.0" styleClass="usr-input" />
+      <PasswordField fx:id="txtConfirmPassword" layoutX="251.0" layoutY="383.0" onKeyTyped="#txtConfirmPasswordOnKeyTyped" prefHeight="34.0" prefWidth="192.0" styleClass="usr-input" />
+      <TextField fx:id="txtUserName" layoutX="14.0" layoutY="188.0" prefHeight="34.0" prefWidth="192.0" styleClass="usr-input" />
+      <Label layoutX="14.0" layoutY="166.0" text="User Name" textFill="WHITE" />
+      <Label layoutX="14.0" layoutY="361.0" text="Password" textFill="WHITE" />
+      <Label layoutX="251.0" layoutY="361.0" text="Confirm Password" textFill="WHITE" />
+      <Label layoutX="251.0" layoutY="166.0" text="Role" textFill="WHITE" />
+      <Button fx:id="btnAction" layoutX="367.0" layoutY="462.0" mnemonicParsing="false" onMouseClicked="#btnActionOnMouseClicked" text="Save">
          <styleClass>
             <String fx:value="btn" />
             <String fx:value="btn-usr-save" />
          </styleClass>
       </Button>
-      <Button fx:id="btnClear" layoutX="272.0" layoutY="414.0" mnemonicParsing="false" onMouseClicked="#btnClearOnMouseClicked" text="clear">
+      <Button fx:id="btnClear" layoutX="276.0" layoutY="467.0" mnemonicParsing="false" onMouseClicked="#btnClearOnMouseClicked" text="clear">
          <styleClass>
             <String fx:value="btn" />
             <String fx:value="btn-clear" />
          </styleClass>
       </Button>
-      <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="365.0" prefHeight="17.0" prefWidth="428.0">
+      <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="425.0" prefHeight="17.0" prefWidth="428.0">
          <children>
             <Label fx:id="lblPassword" prefHeight="17.0" prefWidth="191.0" textFill="#f80000" />
             <Label fx:id="lblConfirmPassword" prefHeight="17.0" prefWidth="191.0" textFill="#f80000">
@@ -59,7 +59,14 @@
             </Label>
          </children>
       </HBox>
-      <ComboBox fx:id="cmbRole" layoutX="251.0" layoutY="198.0" prefHeight="34.0" prefWidth="192.0" styleClass="usr-input" />
+      <ComboBox fx:id="cmbRole" layoutX="251.0" layoutY="188.0" prefHeight="34.0" prefWidth="192.0" styleClass="usr-input" />
+      <TextField fx:id="txtEmail" layoutX="14.0" layoutY="284.0" onKeyTyped="#txtEmailOnKeyTyped" prefHeight="34.0" prefWidth="428.0" styleClass="usr-input" />
+      <Label layoutX="14.0" layoutY="262.0" text="Email" textFill="WHITE" />
+      <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="324.0" prefHeight="17.0" prefWidth="428.0">
+         <children>
+            <Label fx:id="lblEmail" prefHeight="17.0" prefWidth="430.0" textFill="#f80000" />
+         </children>
+      </HBox>
    </children>
    <stylesheets>
       <URL value="@../styles/normalize.css" />

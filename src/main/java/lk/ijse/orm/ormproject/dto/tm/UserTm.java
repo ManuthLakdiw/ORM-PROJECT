@@ -26,6 +26,7 @@ public class UserTm {
     private String name;
     private String password;
     private String role;
+    private String email;
     private Button updateBtn;
     private Button deleteBtn;
 }

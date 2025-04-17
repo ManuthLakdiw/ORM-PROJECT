@@ -49,6 +49,7 @@ public class UserDaoImpl implements UserDao {
                 user.setPassword(entity.getPassword());
             }
             user.setRole(entity.getRole());
+            user.setEmail(entity.getEmail());
             session.merge(user);
             tx.commit();
             return true;
@@ -77,7 +78,6 @@ public class UserDaoImpl implements UserDao {
         }
         return false;
     }
-
 
     @Override
     public List<User> getAll() throws Exception {
@@ -119,6 +119,7 @@ public class UserDaoImpl implements UserDao {
             System.out.println(user.getUsername());
             System.out.println(user.getPassword());
             System.out.println(user.getRole());
+            System.out.println(user.getEmail());
             tx.commit();
             System.out.println("have user");
 

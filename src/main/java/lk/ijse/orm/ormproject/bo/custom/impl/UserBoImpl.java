@@ -31,6 +31,7 @@ public class UserBoImpl implements UserBo {
         user.setUsername(userDto.getName());
         user.setPassword(encodedPassword);
         user.setRole(userDto.getRole());
+        user.setEmail(userDto.getEmail().trim());
         return userDao.save(user);
 
     }
@@ -44,6 +45,7 @@ public class UserBoImpl implements UserBo {
                 userDto.setId(user.getId());
                 userDto.setName(user.getUsername());
                 userDto.setRole(user.getRole());
+                userDto.setEmail(user.getEmail());
                 userDtos.add(userDto);
             }
             return userDtos;
@@ -105,6 +107,7 @@ public class UserBoImpl implements UserBo {
         user.setId(userDto.getId());
         user.setUsername(userDto.getName());
         user.setRole(userDto.getRole());
+        user.setEmail(userDto.getEmail().trim());
         Optional<String> password = Optional.ofNullable(userDto.getPassword());
         if (password.isPresent()) {
             String encodePw = BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt());
@@ -146,4 +149,15 @@ public class UserBoImpl implements UserBo {
 //        }
 //        return null;
     }
+
+    @Override
+    public String getUserEmailByUserName(String username) throws Exception {
+       Optional<User> user = userDao.getUserByUserName(username);
+       if (user.isPresent()) {
+           return user.get().getEmail();
+
+       }
+        return null;
+    }
+
 }

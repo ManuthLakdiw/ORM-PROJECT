@@ -2,10 +2,7 @@ package lk.ijse.orm.ormproject.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -53,6 +50,8 @@ public class LoginFormController implements Initializable {
 
     private DashBoardFormController dashboardFormController;
 
+    public static String userName;
+
 
     @FXML
     void btnLoginOnMouseClicked(MouseEvent event) throws Exception {
@@ -69,7 +68,7 @@ public class LoginFormController implements Initializable {
             boolean isVerified = user.verifyUser(txtUserName.getText(), txtShowPw.getText());
             if (isVerified) {
 //                AlertUtil.setInformationAlert(LoginFormController.class , "" , "Verified" , true);
-
+                userName = txtUserName.getText();
                 String userRole = user.getUserRoleByName(txtUserName.getText());
 
 
@@ -133,24 +132,34 @@ public class LoginFormController implements Initializable {
     @FXML
     void txtPasswordOnKeyTyped(KeyEvent event) {
         txtShowPw.setText(txtPassword.getText());
-        RegexUtil.resetStyle(txtPassword , txtUserName , txtShowPw);
+        resetLoginFields(txtPassword , txtUserName , txtShowPw);
+
     }
 
     @FXML
     void txtShowPwOnKeyTyped(KeyEvent event) {
         txtPassword.setText(txtShowPw.getText());
-        RegexUtil.resetStyle(txtPassword , txtUserName , txtShowPw);
+        resetLoginFields(txtPassword , txtUserName , txtShowPw);
 
     }
 
     @FXML
     void txtUserNameOnKeyTyped(KeyEvent event) {
-        RegexUtil.resetStyle(txtPassword , txtUserName , txtShowPw);
+        resetLoginFields(txtPassword , txtUserName , txtShowPw);
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         txtShowPw.setVisible(false);
+    }
+
+
+    private <T extends TextInputControl> void resetLoginFields(T... inputNodes) {
+        String resetStyle = "-fx-border-color: white;";
+        for (T node : inputNodes) {
+            node.setStyle(resetStyle);
+        }
+
     }
 }
