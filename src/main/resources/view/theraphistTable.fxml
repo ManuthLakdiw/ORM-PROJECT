@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="theraphistPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1035.0" styleClass="pane" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.orm.ormproject.controller.TheraphistTableFormController">
+   <children>
+      <TableView fx:id="tblTheraphist" layoutX="56.0" layoutY="241.0" prefHeight="362.0" prefWidth="924.0">
+         <columns>
+            <TableColumn fx:id="colID" prefWidth="107.0" text="ID" />
+            <TableColumn fx:id="colTheraphistName" minWidth="3.1930389404296875" prefWidth="208.0" text="Theraphist Name" />
+            <TableColumn fx:id="colTheraphistEmail" prefWidth="176.0" text="Email" />
+            <TableColumn fx:id="colTheraphistProgramme" minWidth="0.0" prefWidth="198.0" text="Programmes" />
+            <TableColumn fx:id="colTheraphistUpdate" minWidth="-Infinity" prefWidth="117.41058349609375" text="Update" />
+            <TableColumn fx:id="colTheraphistDelete" prefWidth="117.58935546875" text="Delete" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnAdd" layoutX="832.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#btnAddOnMouseClicked" prefHeight="40.0" prefWidth="167.0" styleClass="btn-add-user" text="+ Add" textFill="WHITE" />
+   </children>
+   <stylesheets>
+      <URL value="@../styles/normalize.css" />
+      <URL value="@../styles/table.css" />
+      <URL value="@../styles/btn-delete-update.css" />
+      <URL value="@../styles/user.css" />
+   </stylesheets>
+</Pane>
