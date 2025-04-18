@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -16,22 +15,22 @@ import java.util.List;
  * @github https://github.com/ManuthLakdiw
  */
 
+@Entity
+@Table(name = "therapist_table")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "programme_table")
-public class Programme implements SuperEntity {
+public class Therapist implements SuperEntity {
 
     @Id
     private String id;
-    private String programmeName;
-    private String duration;
+    private String name;
+    private String email;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal fee;
+    @ManyToOne
+    private Programme programme;
 
-    @OneToMany(mappedBy = "programme")
-    private List<Therapist> therapists;
 }
+
+

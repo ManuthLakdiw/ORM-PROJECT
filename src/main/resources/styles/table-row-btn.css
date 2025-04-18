@@ -23,3 +23,18 @@
 .delete-btn:hover {
     -fx-background-color: #d32f2f;
 }
+
+
+.profile-btn {
+    -fx-background-color: #c1a400;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+
+.profile-btn:hover {
+    -fx-background-color: #8f7800;
+}

@@ -12,6 +12,11 @@ import javafx.util.Duration;
  */
 public class RegexUtil {
 
+    public final static String nameRegex = "^[A-Za-z]+(\\.[A-Za-z]+)*(\\s[A-Za-z]+)*$";
+    public final static String phoneNumberRegex = "^[0]{1}[7]{1}[01245678]{1}[0-9]{7}$";
+    public final static String emailRegex = "[\\w]*@*[a-z]*\\.*[\\w]{5,}(\\.)*(com)*(@gmail\\.com)";
+
+
     public static<T extends TextInputControl> void setShake(T... inputNodes) {
         for (T node : inputNodes) {
             TranslateTransition shake = new TranslateTransition(Duration.millis(50), node);

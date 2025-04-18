@@ -23,6 +23,16 @@
                   <Font size="31.0" />
                </font>
             </Button>
+            <Button fx:id="btnTherapist" mnemonicParsing="false" onMouseClicked="#btnTherapistOnMouseClicked" prefHeight="82.0" prefWidth="290.0" text="Therapists">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnPatient" mnemonicParsing="false" onMouseClicked="#btnPatientOnMouseClicked" prefHeight="82.0" prefWidth="290.0" text="Patient">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Button>
             <Button fx:id="btnCheck" mnemonicParsing="false" prefHeight="127.0" prefWidth="290.0" text="check" />
             <Button fx:id="btnLogout" mnemonicParsing="false" onMouseClicked="#btnLogoutOnMouseClicked" prefHeight="82.0" prefWidth="290.0" text="Log Out">
                <font>

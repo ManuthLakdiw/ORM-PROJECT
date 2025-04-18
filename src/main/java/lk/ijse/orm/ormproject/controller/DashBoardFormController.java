@@ -26,6 +26,13 @@ public class DashBoardFormController {
     private Button btnProgramme;
 
     @FXML
+    private Button btnTherapist;
+
+    @FXML
+    private Button btnPatient;
+
+
+    @FXML
     private AnchorPane dashboardPane;
 
     @FXML
@@ -59,6 +66,21 @@ public class DashBoardFormController {
     void btnProgrammeOnMouseClicked(MouseEvent event) {
         NavigationUtil.loadPane(DashBoardFormController.class ,navPane, "Programme", "/view/programmeTable.fxml");
     }
+
+    @FXML
+    void btnTherapistOnMouseClicked(MouseEvent event) {
+        NavigationUtil.loadPane(DashBoardFormController.class ,navPane, "Therapist", "/view/therapistTable.fxml");
+
+    }
+
+
+    @FXML
+    void btnPatientOnMouseClicked(MouseEvent event) {
+        NavigationUtil.loadPane(DashBoardFormController.class ,navPane, "Patient", "/view/patientTable.fxml");
+
+
+    }
+
 
 
     public void manageRoleTask(boolean visible) {

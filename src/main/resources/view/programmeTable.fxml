@@ -23,7 +23,7 @@
    <stylesheets>
       <URL value="@../styles/normalize.css" />
       <URL value="@../styles/table.css" />
-      <URL value="@../styles/btn-delete-update.css" />
+      <URL value="@../styles/table-row-btn.css" />
       <URL value="@../styles/user.css" />
    </stylesheets>
 </Pane>

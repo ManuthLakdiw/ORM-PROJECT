@@ -145,7 +145,7 @@ public class ProgrammeTableFormController implements Initializable {
         deleteBtn.setOnAction(event -> {
             if (AlertUtil.setConfirmationAlert("Delete", "Are you sure you want to delete this Programme?")) {
                 try {
-                    boolean isDeleted = programmeBo.deleteProgramme(programmeDto    .getId());
+                    boolean isDeleted = programmeBo.deleteProgramme(programmeDto.getId());
                     if (isDeleted) {
                        loadProgrammeTable();
                         AlertUtil.setInformationAlert(UserActionFormController.class, "", "Programme deleted successfully", true);

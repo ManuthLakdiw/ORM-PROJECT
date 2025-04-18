@@ -1,4 +1,4 @@
-package lk.ijse.orm.ormproject.bo;
+package lk.ijse.orm.ormproject.dto;
 
 /**
  * @author manuthlakdiv
@@ -6,6 +6,5 @@ package lk.ijse.orm.ormproject.bo;
  * @project ORM-PROJECT
  * @github https://github.com/ManuthLakdiw
  */
-public enum BoTypes {
-    USER,PROGRAMME,PATIENT
+public class TherapistDto {
 }

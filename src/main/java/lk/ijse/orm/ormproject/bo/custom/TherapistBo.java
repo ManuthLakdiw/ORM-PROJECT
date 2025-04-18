@@ -1,4 +1,6 @@
-package lk.ijse.orm.ormproject.bo;
+package lk.ijse.orm.ormproject.bo.custom;
+
+import lk.ijse.orm.ormproject.bo.SuperBo;
 
 /**
  * @author manuthlakdiv
@@ -6,6 +8,5 @@ package lk.ijse.orm.ormproject.bo;
  * @project ORM-PROJECT
  * @github https://github.com/ManuthLakdiw
  */
-public enum BoTypes {
-    USER,PROGRAMME,PATIENT
+public interface TherapistBo {
 }

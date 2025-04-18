@@ -10,6 +10,7 @@ module lk.ijse.orm.ormproject {
     requires com.jfoenix;
     requires javafx.controls;
     requires java.mail;
+    requires java.management;
 
     opens lk.ijse.orm.ormproject.controller to javafx.fxml;
     exports lk.ijse.orm.ormproject;
