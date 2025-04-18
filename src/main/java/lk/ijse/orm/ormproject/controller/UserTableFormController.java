@@ -19,6 +19,7 @@ import lk.ijse.orm.ormproject.dto.tm.UserTm;
 import lk.ijse.orm.ormproject.util.AlertUtil;
 import lk.ijse.orm.ormproject.util.DateUtil;
 import lk.ijse.orm.ormproject.util.NavigationUtil;
+import lombok.Setter;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -33,6 +34,9 @@ public class UserTableFormController implements Initializable {
     UserBo userBo = BoFactory.getInstance().getBo(BoTypes.USER);
 
     private UserActionFormController userActionFormController;
+
+    @FXML
+    @Setter
     private  UserValidFormController userValidFormController;
 
 
@@ -129,25 +133,48 @@ public class UserTableFormController implements Initializable {
 
 
     private void setUpdateButtonAction(Button updateBtn, UserDto userDto) {
+
         updateBtn.setOnAction(event -> {
-            UserActionFormController userActionFormController = NavigationUtil.loadSubStage(
-                    UserTableFormController.class,
-                    "/view/userAction.fxml",
-                    "update user",
-                    updateBtn.getScene().getWindow()
-            );
+
+            if (userDto.getRole().equalsIgnoreCase("admin")) {
+                UserValidFormController userValidFormController = NavigationUtil.loadSubStage(
+                        getClass(),
+                        "/view/userValid.fxml",
+                        "Type password Here",
+                        btnAdd.getScene().getWindow()
+                );
+
+                if (userValidFormController != null) {
+                    userValidFormController.setUserTableFormController(this);
+                    userValidFormController.setUserTableFormController(this);
+                    this.userValidFormController = userValidFormController;
+                    userValidFormController.setUser(userDto);
+                    userValidFormController.setRemove(false);
+
+                    userValidFormController.setEdit(true);
+                }
+
+            } else {
+                UserActionFormController userActionFormController = NavigationUtil.loadSubStage(
+                        UserTableFormController.class,
+                        "/view/userAction.fxml",
+                        "update user",
+                        updateBtn.getScene().getWindow()
+                );
 
 
-            if (userActionFormController != null) {
-                userActionFormController.setUserData(userDto);
-                userActionFormController.setActionButtonText("Update");
-                userActionFormController.setLblTitle("USER UPDATE");
-                userActionFormController.setUserTableFormController(this);
-                this.userActionFormController = userActionFormController;
+                if (userActionFormController != null) {
+                    userActionFormController.setUserData(userDto);
+                    userActionFormController.setActionButtonText("Update");
+                    userActionFormController.setLblTitle("USER UPDATE");
+                    userActionFormController.setUserTableFormController(this);
+                    userActionFormController.setSendEmail(true);
+                    this.userActionFormController = userActionFormController;
+                }
+
             }
+
         });
-
-
     }
 
 
@@ -159,12 +186,19 @@ public class UserTableFormController implements Initializable {
             if (AlertUtil.setConfirmationAlert("Delete", "Are you sure you want to delete this user?")) {
 
                 if (userDto.getRole().equalsIgnoreCase("admin")) {
-                    UserValidFormController userValidFormController = NavigationUtil.loadSubStage(getClass(),"/view/userValid.fxml","Type password Here",btnAdd.getScene().getWindow());
+                        UserValidFormController userValidFormController = NavigationUtil.loadSubStage(
+                                getClass(),
+                                "/view/userValid.fxml",
+                                "Type password Here",
+                                btnAdd.getScene().getWindow()
+                        );
 
                     if (userValidFormController != null) {
                         userValidFormController.setUserTableFormController(this);
                         this.userValidFormController = userValidFormController;
                         userValidFormController.setUser(userDto);
+                        userValidFormController.setRemove(true);
+                        userValidFormController.setEdit(false);
                     }
 
 
