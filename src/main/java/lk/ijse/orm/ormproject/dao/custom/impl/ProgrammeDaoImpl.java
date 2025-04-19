@@ -94,4 +94,35 @@ public class ProgrammeDaoImpl implements ProgrammeDao {
         session.close();
         return Optional.ofNullable(lastPK);
     }
+
+
+    @Override
+    public Optional<List<String>> getAllProgrammeNames() throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+
+        try {
+            List<String> programmeNames = session
+                    .createQuery("SELECT P.programmeName FROM Programme P", String.class)
+                    .getResultList();
+            return Optional.of(programmeNames);
+        }finally {
+            session.close();
+        }
+    }
+
+    public Optional<Programme> findProgrammeByName(String programmeName) throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+
+        try {
+            Programme programme = session
+                    .createQuery("FROM Programme WHERE programmeName = :name", Programme.class)
+                    .setParameter("name", programmeName)
+                    .uniqueResult();
+
+            return Optional.ofNullable(programme);
+        } finally {
+            session.close();
+        }
+    }
+
 }

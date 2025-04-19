@@ -150,7 +150,7 @@ public class ProgrammeTableFormController implements Initializable {
                        loadProgrammeTable();
                         AlertUtil.setInformationAlert(UserActionFormController.class, "", "Programme deleted successfully", true);
                     } else {
-                        AlertUtil.setInformationAlert(UserActionFormController.class, "", "Failed to delete Programme", false);
+                        AlertUtil.setInformationAlert(UserActionFormController.class, "", "Cannot delete this programme because it is already in use or another fault!!!", false);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

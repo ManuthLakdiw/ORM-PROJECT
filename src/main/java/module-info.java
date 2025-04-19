@@ -12,6 +12,7 @@ module lk.ijse.orm.ormproject {
     requires java.mail;
     requires java.management;
     requires org.controlsfx.controls;
+    requires fontawesomefx;
 
     opens lk.ijse.orm.ormproject.controller to javafx.fxml;
     exports lk.ijse.orm.ormproject;

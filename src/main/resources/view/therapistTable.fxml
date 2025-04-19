@@ -10,12 +10,13 @@
    <children>
       <TableView fx:id="tblTherapist" layoutX="56.0" layoutY="241.0" prefHeight="362.0" prefWidth="924.0">
          <columns>
-            <TableColumn fx:id="colID" prefWidth="107.0" text="ID" />
-            <TableColumn fx:id="colTherapistName" minWidth="3.1930389404296875" prefWidth="208.0" text="Therapist Name" />
-            <TableColumn fx:id="colTherapistEmail" prefWidth="176.0" text="Email" />
-            <TableColumn fx:id="colTherapistProgramme" minWidth="0.0" prefWidth="198.0" text="Programmes" />
-            <TableColumn fx:id="colTherapistUpdate" minWidth="-Infinity" prefWidth="117.41058349609375" text="Update" />
-            <TableColumn fx:id="colTherapistDelete" prefWidth="117.58935546875" text="Delete" />
+            <TableColumn fx:id="colID" prefWidth="79.0" text="ID" />
+            <TableColumn fx:id="colTherapistName" minWidth="3.1930389404296875" prefWidth="164.0" text="Therapist Name" />
+            <TableColumn fx:id="colTherapistEmail" prefWidth="180.0" text="Email" />
+            <TableColumn fx:id="colTherapistContactNumber" minWidth="0.0" prefWidth="113.0" text="Telephone" />
+            <TableColumn fx:id="colTherapistProgramme" minWidth="-Infinity" prefWidth="208.0" text="Programme" />
+            <TableColumn fx:id="colTherapistUpdate" prefWidth="89.0" text="Update" />
+            <TableColumn fx:id="colTherapistDelete" prefWidth="90.0" text="Delete" />
          </columns>
       </TableView>
       <Button fx:id="btnAdd" layoutX="832.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#btnAddOnMouseClicked" prefHeight="40.0" prefWidth="167.0" styleClass="btn-add-user" text="+ Add" textFill="WHITE" />

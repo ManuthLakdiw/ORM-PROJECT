@@ -6,6 +6,7 @@ package lk.ijse.orm.ormproject.dao;
  * @project ORM-PROJECT
  * @github https://github.com/ManuthLakdiw
  */
+
 public enum DaoTypes {
-    USER,PROGRAMME,PATIENT
+    USER,PROGRAMME,PATIENT,THERAPIST
 }

@@ -27,7 +27,7 @@ public class Therapist implements SuperEntity {
     private String id;
     private String name;
     private String email;
-
+    private String telephone;
     @ManyToOne
     private Programme programme;
 
