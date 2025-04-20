@@ -1,8 +1,8 @@
 .update-btn {
     -fx-background-color: #54c159;
     -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-padding: 8px 16px;
+    -fx-font-size: 11px;
+    -fx-padding: 6px 12px;
     -fx-border-radius: 5px;
     -fx-cursor: hand;
 }
@@ -11,11 +11,15 @@
     -fx-background-color: #45a049;
 }
 
+.update-btn .glyph-icon {
+    -fx-fill: #ffffff;
+}
+
 .delete-btn {
     -fx-background-color: #fa483c;
     -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-padding: 8px 16px;
+    -fx-font-size: 11px;
+    -fx-padding: 6px 12px;
     -fx-border-radius: 5px;
     -fx-cursor: hand;
 }
@@ -24,12 +28,16 @@
     -fx-background-color: #d32f2f;
 }
 
+.delete-btn .glyph-icon {
+    -fx-fill: #ffffff;
+}
+
 
 .profile-btn {
     -fx-background-color: #c1a400;
     -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-padding: 8px 16px;
+    -fx-font-size: 11px;
+    -fx-padding: 6px 12px;
     -fx-border-radius: 5px;
     -fx-cursor: hand;
 }
@@ -37,4 +45,8 @@
 
 .profile-btn:hover {
     -fx-background-color: #8f7800;
+}
+
+.profile-btn .glyph-icon {
+    -fx-fill: #ffffff;
 }

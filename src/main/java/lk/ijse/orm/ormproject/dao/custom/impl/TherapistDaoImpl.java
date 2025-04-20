@@ -97,4 +97,28 @@ public class TherapistDaoImpl implements TherapistDao {
         String lastPK = session.createQuery("SELECT t.id from Therapist t order by t.id desc", String.class).setMaxResults(1).uniqueResult();
         return Optional.ofNullable(lastPK);
     }
+
+    @Override
+    public Optional<Therapist> getTherapistByName(String therapistName) throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+
+        Therapist therapist = session.createQuery("FROM Therapist WHERE name = :name", Therapist.class)
+                .setParameter("name", therapistName)
+                .uniqueResult();
+
+        return Optional.ofNullable(therapist);
+    }
+
+    @Override
+    public List<Therapist> getTherapistsByProgrammeID(String programId) throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+
+        return session.createQuery(
+                "FROM Therapist t WHERE t.programme.id = :programId", Therapist.class)
+                .setParameter("programId", programId)
+                .list();
+
+    }
+
+
 }

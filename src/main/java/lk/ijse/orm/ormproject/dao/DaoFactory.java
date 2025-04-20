@@ -1,9 +1,6 @@
 package lk.ijse.orm.ormproject.dao;
 
-import lk.ijse.orm.ormproject.dao.custom.impl.PatientDaoImpl;
-import lk.ijse.orm.ormproject.dao.custom.impl.ProgrammeDaoImpl;
-import lk.ijse.orm.ormproject.dao.custom.impl.TherapistDaoImpl;
-import lk.ijse.orm.ormproject.dao.custom.impl.UserDaoImpl;
+import lk.ijse.orm.ormproject.dao.custom.impl.*;
 
 /**
  * @author manuthlakdiv
@@ -26,6 +23,7 @@ public class DaoFactory {
             case PROGRAMME -> (T) new ProgrammeDaoImpl();
             case PATIENT -> (T) new PatientDaoImpl();
             case THERAPIST -> (T) new TherapistDaoImpl();
+            case THERAPYSESSION -> (T) new TherapySessionDaoImpl();
         };
     }
 }

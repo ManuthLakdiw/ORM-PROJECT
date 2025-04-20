@@ -8,11 +8,10 @@ module lk.ijse.orm.ormproject {
     requires jbcrypt;
     requires java.desktop;
     requires com.jfoenix;
-    requires javafx.controls;
     requires java.mail;
     requires java.management;
     requires org.controlsfx.controls;
-    requires fontawesomefx;
+    requires de.jensd.fx.glyphs.materialicons;
 
     opens lk.ijse.orm.ormproject.controller to javafx.fxml;
     exports lk.ijse.orm.ormproject;

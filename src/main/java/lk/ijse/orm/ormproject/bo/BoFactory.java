@@ -1,9 +1,6 @@
 package lk.ijse.orm.ormproject.bo;
 
-import lk.ijse.orm.ormproject.bo.custom.impl.PatientBoImpl;
-import lk.ijse.orm.ormproject.bo.custom.impl.ProgrammeBoImpl;
-import lk.ijse.orm.ormproject.bo.custom.impl.TherapistBoImpl;
-import lk.ijse.orm.ormproject.bo.custom.impl.UserBoImpl;
+import lk.ijse.orm.ormproject.bo.custom.impl.*;
 
 /**
  * @author manuthlakdiv
@@ -29,6 +26,7 @@ public class BoFactory {
             case PROGRAMME -> (T) new ProgrammeBoImpl();
             case PATIENT -> (T) new PatientBoImpl();
             case THERAPIST -> (T) new TherapistBoImpl();
+            case THERAPYSESSION ->  (T) new TherapySessionBoImpl();
         };
     }
 

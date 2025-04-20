@@ -23,23 +23,28 @@
                   <Font size="31.0" />
                </font>
             </Button>
-            <Button fx:id="btnTherapist" mnemonicParsing="false" onMouseClicked="#btnTherapistOnMouseClicked" prefHeight="82.0" prefWidth="290.0" text="Therapists">
+            <Button fx:id="btnTherapist" mnemonicParsing="false" onMouseClicked="#btnTherapistOnMouseClicked" prefHeight="44.0" prefWidth="290.0" text="Therapists">
                <font>
                   <Font size="31.0" />
                </font>
             </Button>
-            <Button fx:id="btnPatient" mnemonicParsing="false" onMouseClicked="#btnPatientOnMouseClicked" prefHeight="82.0" prefWidth="290.0" text="Patient">
+            <Button fx:id="btnPatient" mnemonicParsing="false" onMouseClicked="#btnPatientOnMouseClicked" prefHeight="34.0" prefWidth="290.0" text="Patient">
                <font>
                   <Font size="31.0" />
                </font>
             </Button>
-            <Button fx:id="btnCheck" mnemonicParsing="false" prefHeight="127.0" prefWidth="290.0" text="check" />
+            <Button fx:id="btnCheck" mnemonicParsing="false" prefHeight="54.0" prefWidth="290.0" text="check" />
             <Button fx:id="btnLogout" mnemonicParsing="false" onMouseClicked="#btnLogoutOnMouseClicked" prefHeight="82.0" prefWidth="290.0" text="Log Out">
                <font>
                   <Font size="31.0" />
                </font>
             </Button>
-            <Button fx:id="btnProgramme" mnemonicParsing="false" onMouseClicked="#btnProgrammeOnMouseClicked" prefHeight="95.0" prefWidth="321.0" text="programme">
+            <Button fx:id="btnProgramme" mnemonicParsing="false" onMouseClicked="#btnProgrammeOnMouseClicked" prefHeight="42.0" prefWidth="290.0" text="programme">
+               <font>
+                  <Font size="44.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSession" mnemonicParsing="false" onMouseClicked="#btnSessionOnMouseClicked" prefHeight="66.0" prefWidth="290.0" text="Session">
                <font>
                   <Font size="44.0" />
                </font>

@@ -1,9 +1,6 @@
 package lk.ijse.orm.ormproject.config;
 
-import lk.ijse.orm.ormproject.entity.Patient;
-import lk.ijse.orm.ormproject.entity.Programme;
-import lk.ijse.orm.ormproject.entity.Therapist;
-import lk.ijse.orm.ormproject.entity.User;
+import lk.ijse.orm.ormproject.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -38,6 +35,7 @@ public class FactoryConfiguration {
         cfg.addAnnotatedClass(Programme.class);
         cfg.addAnnotatedClass(Therapist.class);
         cfg.addAnnotatedClass(Patient.class);
+        cfg.addAnnotatedClass(TherapySession.class);
         sessionFactory = cfg.buildSessionFactory();
     }
 

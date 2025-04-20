@@ -8,5 +8,5 @@ package lk.ijse.orm.ormproject.dao;
  */
 
 public enum DaoTypes {
-    USER,PROGRAMME,PATIENT,THERAPIST
+    USER,PROGRAMME,PATIENT,THERAPIST,THERAPYSESSION
 }

@@ -1,5 +1,7 @@
 package lk.ijse.orm.ormproject.controller;
 
+import de.jensd.fx.glyphs.materialicons.MaterialIcon;
+import de.jensd.fx.glyphs.materialicons.utils.MaterialIconFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -113,9 +115,13 @@ public class PatientTableFormController implements Initializable {
     }
 
     public PatientTm createTableRow(PatientDto patientDto) {
-        Button updateBtn = createStyledButton("Update", "update-btn");
-        Button deleteBtn = createStyledButton("Delete", "delete-btn");
-        Button profileBtn = createStyledButton("Profile", "profile-btn");
+        Button updateBtn = createStyledButton("", "update-btn");
+        Button deleteBtn = createStyledButton("", "delete-btn");
+        Button profileBtn = createStyledButton("", "profile-btn");
+
+        deleteBtn.setGraphic(MaterialIconFactory.get().createIcon(MaterialIcon.DELETE, "16px"));
+        updateBtn.setGraphic(MaterialIconFactory.get().createIcon(MaterialIcon.EDIT, "16px"));
+        profileBtn.setGraphic(MaterialIconFactory.get().createIcon(MaterialIcon.ACCOUNT_CIRCLE, "16px"));
 
         setDeleteBtnOnAction(deleteBtn,patientDto);
         setUpdateBtnOnAction(updateBtn,patientDto);

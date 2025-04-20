@@ -33,6 +33,10 @@ public class DashBoardFormController {
 
 
     @FXML
+    private Button btnSession;
+
+
+    @FXML
     private AnchorPane dashboardPane;
 
     @FXML
@@ -89,6 +93,12 @@ public class DashBoardFormController {
         btnProgramme.setVisible(visible);
         btnProgramme.setManaged(visible);
 
+
+    }
+
+    @FXML
+    void btnSessionOnMouseClicked(MouseEvent mouseEvent) {
+        NavigationUtil.loadPane(DashBoardFormController.class ,navPane, "Session", "/view/sessionTable.fxml");
 
     }
 }

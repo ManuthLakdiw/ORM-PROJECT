@@ -14,9 +14,9 @@
             <TableColumn fx:id="colTherapistName" minWidth="3.1930389404296875" prefWidth="164.0" text="Therapist Name" />
             <TableColumn fx:id="colTherapistEmail" prefWidth="180.0" text="Email" />
             <TableColumn fx:id="colTherapistContactNumber" minWidth="0.0" prefWidth="113.0" text="Telephone" />
-            <TableColumn fx:id="colTherapistProgramme" minWidth="-Infinity" prefWidth="208.0" text="Programme" />
-            <TableColumn fx:id="colTherapistUpdate" prefWidth="89.0" text="Update" />
-            <TableColumn fx:id="colTherapistDelete" prefWidth="90.0" text="Delete" />
+            <TableColumn fx:id="colTherapistProgramme" minWidth="-Infinity" prefWidth="245.0" text="Programme" />
+            <TableColumn fx:id="colTherapistUpdate" minWidth="70.0" prefWidth="-1.0" />
+            <TableColumn fx:id="colTherapistDelete" minWidth="70.0" prefWidth="-1.0" />
          </columns>
       </TableView>
       <Button fx:id="btnAdd" layoutX="832.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#btnAddOnMouseClicked" prefHeight="40.0" prefWidth="167.0" styleClass="btn-add-user" text="+ Add" textFill="WHITE" />

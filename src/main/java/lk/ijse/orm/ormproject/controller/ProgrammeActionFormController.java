@@ -182,14 +182,7 @@ public class ProgrammeActionFormController implements Initializable {
         Platform.runLater(() -> {
             txtProgrammeName.requestFocus();
         });
-        String [] duration = new String[24];
-        for (int i = 0; i < 24; i++) {
-            duration[i] = i+1+" month";
-            if (i >= 1){
-                duration[i] = i+1+" months";
-
-            }
-        }
+        String[] duration = {"15min","30min","45min","1hour","75min","90min","105min","2hour"};
 
         cmbDuration.getItems().addAll(duration);
 

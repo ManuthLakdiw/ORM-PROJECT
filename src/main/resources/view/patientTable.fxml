@@ -11,11 +11,11 @@
       <TableView fx:id="tblPatient" layoutX="56.0" layoutY="241.0" prefHeight="362.0" prefWidth="924.0">
          <columns>
             <TableColumn fx:id="colID" prefWidth="135.0" text="ID" />
-            <TableColumn fx:id="colPatientName" minWidth="3.1930389404296875" prefWidth="199.0" text="Patient Name" />
-            <TableColumn fx:id="colEmail" prefWidth="238.0" text="Email" />
-            <TableColumn fx:id="colProfile" minWidth="0.0" prefWidth="117.0" text="Profile" />
-            <TableColumn fx:id="colUpdate" minWidth="-Infinity" prefWidth="117.41058349609375" text="Update" />
-            <TableColumn fx:id="colDelete" prefWidth="117.58935546875" text="Delete" />
+            <TableColumn fx:id="colPatientName" minWidth="3.1930389404296875" prefWidth="268.0" text="Patient Name" />
+            <TableColumn fx:id="colEmail" prefWidth="309.0" text="Email" />
+            <TableColumn fx:id="colProfile" minWidth="0.0" prefWidth="70.0" />
+            <TableColumn fx:id="colUpdate" minWidth="-Infinity" prefWidth="70.5" />
+            <TableColumn fx:id="colDelete" maxWidth="87.5" minWidth="44.0" prefWidth="70.5" />
          </columns>
       </TableView>
       <Button fx:id="btnAdd" layoutX="832.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#btnAddOnMouseClicked" prefHeight="40.0" prefWidth="167.0" styleClass="btn-add-user" text="+ Add" textFill="WHITE" />
