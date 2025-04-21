@@ -2,9 +2,14 @@ package lk.ijse.orm.ormproject.dto.tm;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import javafx.scene.control.Button;
 import lk.ijse.orm.ormproject.entity.Programme;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.awt.*;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -14,6 +19,11 @@ import java.time.LocalTime;
  * @project ORM-PROJECT
  * @github https://github.com/ManuthLakdiw
  */
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class TherapySessionTm {
     private String id;
     private LocalDate date;

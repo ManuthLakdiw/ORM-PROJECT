@@ -16,7 +16,7 @@ import java.util.Optional;
  */
 public interface TherapySessionBo extends SuperBo {
     String generateNewTherapySessionID() throws Exception;
-    List<TherapistDto> getAllTherapySessions() throws Exception;
+    List<TherapySessionDto> getAllTherapySessions() throws Exception;
     boolean saveTherapySession(TherapySessionDto therapySessionDto) throws Exception;
     boolean deleteTherapySession(String id) throws Exception;
     boolean updateTherapySession(TherapySessionDto therapySessionDto) throws Exception;

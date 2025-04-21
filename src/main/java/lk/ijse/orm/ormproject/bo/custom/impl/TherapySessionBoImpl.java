@@ -40,8 +40,23 @@ public class TherapySessionBoImpl implements TherapySessionBo {
     }
 
     @Override
-    public List<TherapistDto> getAllTherapySessions() throws Exception {
-        return List.of();
+    public List<TherapySessionDto> getAllTherapySessions() throws Exception {
+       List<TherapySessionDto> therapySessions = new ArrayList<>();
+        List<TherapySession> all = therapySessionDao.getAll();
+        for (TherapySession therapySession : all) {
+            TherapySessionDto therapySessionDto = new TherapySessionDto();
+            therapySessionDto.setId(therapySession.getId());
+            therapySessionDto.setProgramme(therapySession.getProgramme().getProgrammeName());
+            Optional<Therapist> byId = therapistDao.findById(therapySession.getTherapist());
+            if (byId.isPresent()) {
+                therapySessionDto.setTherapist(byId.get().getName());
+            }
+            therapySessionDto.setDate(therapySession.getDate());
+            therapySessionDto.setStartTime(therapySession.getStartTime());
+            therapySessionDto.setEndTime(therapySession.getEndTime());
+            therapySessions.add(therapySessionDto);
+        }
+        return therapySessions;
     }
 
     @Override
@@ -66,12 +81,28 @@ public class TherapySessionBoImpl implements TherapySessionBo {
 
     @Override
     public boolean deleteTherapySession(String id) throws Exception {
-        return false;
+        return therapySessionDao.delete(id);
     }
 
     @Override
     public boolean updateTherapySession(TherapySessionDto therapySessionDto) throws Exception {
-        return false;
+        TherapySession therapySession = new TherapySession();
+
+        therapySession.setId(therapySessionDto.getId());
+        therapySession.setDate(therapySessionDto.getDate());
+        therapySession.setStartTime(therapySessionDto.getStartTime());
+        therapySession.setEndTime(therapySessionDto.getEndTime());
+        Optional<Therapist> therapistByName = therapistDao.getTherapistByName(therapySessionDto.getTherapist());
+        if (therapistByName.isPresent()) {
+            therapySession.setTherapist(therapistByName.get().getId());
+        }
+        Optional<Programme> programmeByName = programmeDao.findProgrammeByName(therapySessionDto.getProgramme());
+        if (programmeByName.isPresent()) {
+            therapySession.setProgramme(programmeByName.get());
+        }
+
+        return therapySessionDao.update(therapySession);
+
     }
 
     @Override
@@ -91,8 +122,10 @@ public class TherapySessionBoImpl implements TherapySessionBo {
         if (programmeByName.isPresent()) {
             therapistsByProgrammeName = therapistDao.getTherapistsByProgrammeID(programmeByName.get().getId());
         }
-        for (Therapist therapist : therapistsByProgrammeName) {
-            therapistNames.add(therapist.getName());
+        if (therapistsByProgrammeName != null) {
+            for (Therapist therapist : therapistsByProgrammeName) {
+                therapistNames.add(therapist.getName());
+            }
         }
         return therapistNames;
     }

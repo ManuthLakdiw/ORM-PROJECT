@@ -11,10 +11,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import lk.ijse.orm.ormproject.bo.BoFactory;
 import lk.ijse.orm.ormproject.bo.BoTypes;
 import lk.ijse.orm.ormproject.bo.custom.TherapySessionBo;
 import lk.ijse.orm.ormproject.dto.TherapySessionDto;
+import lk.ijse.orm.ormproject.exception.MissingFieldException;
 import lk.ijse.orm.ormproject.util.AlertUtil;
 import lombok.Getter;
 import lombok.Setter;
@@ -78,35 +80,95 @@ public class SessionActionFormController implements Initializable {
 
     @FXML
     void btnActionOnMouseClicked(MouseEvent event) {
-        TherapySessionDto therapySessionDto = new TherapySessionDto();
 
-        therapySessionDto.setId(lblID.getText());
-        therapySessionDto.setProgramme(cmbProgramme.getValue());
-        therapySessionDto.setTherapist(cmbTherapist.getValue());
-        therapySessionDto.setDate(dpDate.getValue());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h.mm a");
+        if (btnAction.getText().equalsIgnoreCase("Save")) {
 
-        String startTimeStr = cmbStartHour.getValue() +"."+ cmbStartMin.getValue() + " " + cmbStartAmPm.getValue();
-        String endTimeStr = cmbEndHour.getValue() +"."+ cmbEndMin.getValue() + " " + cmbEndAmPm.getValue();
+            if (isAllFieldsValidForSaveOrUpdate()) {
+                TherapySessionDto therapySessionDto = new TherapySessionDto();
+                therapySessionDto.setId(lblID.getText());
+                therapySessionDto.setProgramme(cmbProgramme.getValue());
+                therapySessionDto.setTherapist(cmbTherapist.getValue());
+                therapySessionDto.setDate(dpDate.getValue());
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h.mm a");
 
-        therapySessionDto.setStartTime(LocalTime.parse(startTimeStr.toUpperCase(), formatter));
-        therapySessionDto.setEndTime(LocalTime.parse(endTimeStr.toUpperCase(), formatter));
-        try {
-            boolean isSave = therapySessionBo.saveTherapySession(therapySessionDto);
-            if (isSave) {
-                AlertUtil.setInformationAlert(getClass(),"","Session scheduled successfully." , true);
+                String startTimeStr = cmbStartHour.getValue() +"."+ cmbStartMin.getValue() + " " + cmbStartAmPm.getValue();
+                String endTimeStr = cmbEndHour.getValue() +"."+ cmbEndMin.getValue() + " " + cmbEndAmPm.getValue();
+
+                therapySessionDto.setStartTime(LocalTime.parse(startTimeStr.toUpperCase(), formatter));
+                therapySessionDto.setEndTime(LocalTime.parse(endTimeStr.toUpperCase(), formatter));
+                try {
+                    boolean isSave = therapySessionBo.saveTherapySession(therapySessionDto);
+                    if (isSave) {
+                        sessionTableFormController.loadSessionTable();
+                        resetFields();
+                        AlertUtil.setInformationAlert(getClass(),"","Session scheduled successfully." , true);
+                    }else {
+                        AlertUtil.setInformationAlert(getClass(),"","Cannot scheduled session!!!." , false);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }else {
-                AlertUtil.setInformationAlert(getClass(),"","Cannot scheduled session!!!." , false);
+                AlertUtil.setInformationAlert(
+                        getClass(),
+                        "",
+                        new MissingFieldException("Required field is missing.\nPlease provide all necessary information.").getMessage()
+                        ,true
+                );
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        }else {
+            if (isAllFieldsValidForSaveOrUpdate()) {
+                TherapySessionDto therapySessionDto = new TherapySessionDto();
+                therapySessionDto.setId(lblID.getText());
+                therapySessionDto.setProgramme(cmbProgramme.getValue());
+                therapySessionDto.setTherapist(cmbTherapist.getValue());
+                therapySessionDto.setDate(dpDate.getValue());
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h.mm a");
+
+                String startTimeStr = cmbStartHour.getValue() +"."+ cmbStartMin.getValue() + " " + cmbStartAmPm.getValue();
+                String endTimeStr = cmbEndHour.getValue() +"."+ cmbEndMin.getValue() + " " + cmbEndAmPm.getValue();
+
+                therapySessionDto.setStartTime(LocalTime.parse(startTimeStr.toUpperCase(), formatter));
+                therapySessionDto.setEndTime(LocalTime.parse(endTimeStr.toUpperCase(), formatter));
+
+                try {
+                    boolean isUpdate = therapySessionBo.updateTherapySession(therapySessionDto);
+                    if (isUpdate) {
+                        sessionTableFormController.loadSessionTable();
+                        resetFields();
+                        AlertUtil.setInformationAlert(getClass(),"","Scheduled updated successfully." , true);
+                        Stage stage = (Stage) btnAction.getScene().getWindow();
+                        stage.close();
+
+                    }else {
+                        AlertUtil.setInformationAlert(UserActionFormController.class, "", "Can't update Session Schedule", false);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            }else {
+                AlertUtil.setInformationAlert(
+                        getClass(),
+                        "",
+                        new MissingFieldException("Required field is missing.\nPlease provide all necessary information.").getMessage()
+                        ,true
+                );
+            }
         }
+
 
 
     }
 
     @FXML
     void btnClearOnMouseClicked(MouseEvent event) {
+        try {
+            resetFields();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -177,5 +239,82 @@ public class SessionActionFormController implements Initializable {
         }
 
 
+    }
+
+    private boolean isAllFieldsValidForSaveOrUpdate() {
+        return cmbProgramme.getSelectionModel().getSelectedItem() != null &&
+                cmbTherapist.getSelectionModel().getSelectedItem() != null &&
+                dpDate.getValue() != null &&
+                cmbStartHour.getSelectionModel().getSelectedItem() != null &&
+                cmbStartMin.getSelectionModel().getSelectedItem() != null &&
+                cmbStartAmPm.getSelectionModel().getSelectedItem() != null &&
+                cmbEndHour.getSelectionModel().getSelectedItem() != null &&
+                cmbEndMin.getSelectionModel().getSelectedItem() != null &&
+                cmbEndAmPm.getSelectionModel().getSelectedItem() != null;
+
+    }
+
+    private void resetFields() throws Exception {
+        lblID.setText(therapySessionBo.generateNewTherapySessionID());
+        cmbProgramme.getSelectionModel().clearSelection();
+        cmbTherapist.getSelectionModel().clearSelection();
+        dpDate.setValue(LocalDate.now());
+        cmbStartAmPm.getSelectionModel().clearSelection();
+        cmbStartHour.getSelectionModel().clearSelection();
+        cmbStartMin.getSelectionModel().clearSelection();
+
+        cmbEndAmPm.getSelectionModel().clearSelection();
+        cmbEndHour.getSelectionModel().clearSelection();
+        cmbEndMin.getSelectionModel().clearSelection();
+
+    }
+
+    public void setTherapySessionData(TherapySessionDto therapySessionDto) {
+        lblID.setText(therapySessionDto.getId());
+        cmbProgramme.getSelectionModel().select(therapySessionDto.getProgramme());
+        cmbTherapist.getSelectionModel().select(therapySessionDto.getTherapist());
+        dpDate.setValue(therapySessionDto.getDate());
+
+        LocalTime startTime = therapySessionDto.getStartTime();
+        System.out.println("start time"+ therapySessionDto.getStartTime());
+        LocalTime endTime = therapySessionDto.getEndTime();
+        System.out.println("end time"+ therapySessionDto.getEndTime());
+
+
+        int startHour24 = startTime.getHour();
+        int startHour12 = startHour24 % 12 == 0 ? 12 : startHour24 % 12;
+        System.out.println("start 12 hour : " + startHour12);
+        String startAmPm = startHour24 >= 12 ? "pm" : "am";
+        String startMinute = String.valueOf(startTime.getMinute());
+        if (startMinute.equals("0")){
+            startMinute = "00";
+        }
+
+        cmbStartHour.getSelectionModel().select(String.valueOf(startHour12));
+        cmbStartMin.getSelectionModel().select(startMinute);
+        cmbStartAmPm.getSelectionModel().select(startAmPm);
+
+        int endHour24 = endTime.getHour();
+        int endHour12 = endHour24 % 12 == 0 ? 12 : endHour24 % 12;
+        System.out.println("end 12 hour : " + endHour12);
+        String endAmPm = endHour24 >= 12 ? "pm" : "am";
+        String endMinute = String.valueOf(endTime.getMinute());
+        if (endMinute.equals("0")){
+            endMinute = "00";
+        }
+
+        cmbEndHour.getSelectionModel().select(String.valueOf(endHour12));
+        cmbEndMin.getSelectionModel().select(endMinute);
+        cmbEndAmPm.getSelectionModel().select(endAmPm);
+
+    }
+
+    public void setActionButtonText(String text) {
+        btnAction.setText(text);
+
+    }
+
+    public void setLblTitle(String therapistUpdate) {
+        lblTitle.setText(therapistUpdate);
     }
 }

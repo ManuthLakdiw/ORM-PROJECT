@@ -11,13 +11,13 @@
       <TableView fx:id="tblSession" layoutX="56.0" layoutY="241.0" prefHeight="362.0" prefWidth="924.0">
          <columns>
             <TableColumn fx:id="colID" prefWidth="72.0" text="ID" />
-            <TableColumn fx:id="colProgrammeName" minWidth="3.1930389404296875" prefWidth="184.0" text="Programme Name" />
-            <TableColumn fx:id="colTherapistName" prefWidth="181.0" text="Therapist Name" />
-            <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="143.0" text="Date" />
-            <TableColumn fx:id="colStartTime" minWidth="-Infinity" prefWidth="101.0" text="Start Time" />
-            <TableColumn fx:id="colEndTime" minWidth="70.0" prefWidth="100.0" text="End Time" />
-            <TableColumn fx:id="colUpdate" minWidth="53.0" prefWidth="71.0" text="Updte" />
-            <TableColumn fx:id="colDelete" minWidth="55.0" prefWidth="71.0" text="Delete" />
+            <TableColumn fx:id="colProgrammeName" minWidth="3.1930389404296875" prefWidth="215.0" text="Programme Name" />
+            <TableColumn fx:id="colTherapistName" prefWidth="195.0" text="Therapist Name" />
+            <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="107.0" text="Date" />
+            <TableColumn fx:id="colStartTime" minWidth="-Infinity" prefWidth="96.0" text="Start Time" />
+            <TableColumn fx:id="colEndTime" minWidth="70.0" prefWidth="96.0" text="End Time" />
+            <TableColumn fx:id="colUpdate" minWidth="53.0" prefWidth="71.0" />
+            <TableColumn fx:id="colDelete" minWidth="14.0" prefWidth="71.0" />
          </columns>
       </TableView>
       <Button fx:id="btnAdd" layoutX="832.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#btnAddOnMouseClicked" prefHeight="40.0" prefWidth="167.0" styleClass="btn-add-user" text="+ Add" textFill="WHITE" />
