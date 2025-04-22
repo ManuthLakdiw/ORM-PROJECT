@@ -7,5 +7,5 @@ package lk.ijse.orm.ormproject.bo;
  * @github https://github.com/ManuthLakdiw
  */
 public enum BoTypes {
-    USER,PROGRAMME,PATIENT,THERAPIST,THERAPYSESSION
+    USER,PROGRAMME,PATIENT,THERAPIST,THERAPYSESSION,APPOINTMENT
 }

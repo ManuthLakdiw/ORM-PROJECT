@@ -36,6 +36,7 @@ public class FactoryConfiguration {
         cfg.addAnnotatedClass(Therapist.class);
         cfg.addAnnotatedClass(Patient.class);
         cfg.addAnnotatedClass(TherapySession.class);
+        cfg.addAnnotatedClass(Appointment.class);
         sessionFactory = cfg.buildSessionFactory();
     }
 

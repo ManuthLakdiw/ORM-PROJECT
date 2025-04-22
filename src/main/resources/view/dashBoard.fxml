@@ -41,12 +41,17 @@
             </Button>
             <Button fx:id="btnProgramme" mnemonicParsing="false" onMouseClicked="#btnProgrammeOnMouseClicked" prefHeight="42.0" prefWidth="290.0" text="programme">
                <font>
-                  <Font size="44.0" />
+                  <Font size="29.0" />
                </font>
             </Button>
-            <Button fx:id="btnSession" mnemonicParsing="false" onMouseClicked="#btnSessionOnMouseClicked" prefHeight="66.0" prefWidth="290.0" text="Session">
+            <Button fx:id="btnSession" mnemonicParsing="false" onMouseClicked="#btnSessionOnMouseClicked" prefHeight="60.0" prefWidth="290.0" text="Session">
                <font>
-                  <Font size="44.0" />
+                  <Font size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnAppointment" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#btnAppointmentOnMouseClicked" prefHeight="59.0" prefWidth="290.0" text="Appointment">
+               <font>
+                  <Font size="20.0" />
                </font>
             </Button>
          </children>

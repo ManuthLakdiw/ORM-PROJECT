@@ -16,7 +16,7 @@ public class DaoFactory {
         return daoFactory == null ? daoFactory = new DaoFactory() : daoFactory;
     }
 
-
+    @SuppressWarnings("unchecked")
     public <T extends SuperDao> T getDao(DaoTypes daoType) {
         return switch (daoType){
             case USER -> (T) new UserDaoImpl();
@@ -24,6 +24,7 @@ public class DaoFactory {
             case PATIENT -> (T) new PatientDaoImpl();
             case THERAPIST -> (T) new TherapistDaoImpl();
             case THERAPYSESSION -> (T) new TherapySessionDaoImpl();
+            case APPOINTMENT -> (T) new AppointmentDaoImpl();
         };
     }
 }

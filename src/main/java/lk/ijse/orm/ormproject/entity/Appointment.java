@@ -1,14 +1,17 @@
 package lk.ijse.orm.ormproject.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.Session;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 
 /**
  * @author manuthlakdiv
@@ -17,26 +20,21 @@ import java.util.List;
  * @github https://github.com/ManuthLakdiw
  */
 
+@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "session_schedule")
-public class TherapySession implements SuperEntity {
-
+@Table (name = "appointment_table")
+public class Appointment implements SuperEntity {
     @Id
     private String id;
-    private LocalDate date;
-    private LocalTime startTime;
-    private LocalTime endTime;
-    private String therapist;
+    LocalTime time;
+    LocalDate date;
 
     @ManyToOne
-    private Programme programme;
+    private Patient patient;
 
-    @OneToMany (mappedBy = "therapySession")
-    private List<Appointment> appointments;
-
-
+    @ManyToOne
+    private TherapySession therapySession;
 }

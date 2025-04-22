@@ -84,7 +84,10 @@ public class ProgrammeDaoImpl implements ProgrammeDao {
 
     @Override
     public Optional<Programme> findById(String pk) throws Exception {
-        return Optional.empty();
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Programme programme = session.get(Programme.class, pk);
+        session.close();
+        return Optional.ofNullable(programme);
     }
 
     @Override

@@ -2,6 +2,7 @@ package lk.ijse.orm.ormproject.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author manuthlakdiv
@@ -32,6 +34,11 @@ public class Patient implements SuperEntity {
     private String homeAddress;
     private String telephone;
     private String emailAddress;
+
+
+    @OneToMany (mappedBy = "patient")
+    private List<Appointment> appointments;
+
 
 
 }

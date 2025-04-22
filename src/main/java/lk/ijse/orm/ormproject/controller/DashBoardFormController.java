@@ -31,9 +31,12 @@ public class DashBoardFormController {
     @FXML
     private Button btnPatient;
 
-
     @FXML
     private Button btnSession;
+
+    @FXML
+    private Button btnAppointment;
+
 
 
     @FXML
@@ -99,6 +102,12 @@ public class DashBoardFormController {
     @FXML
     void btnSessionOnMouseClicked(MouseEvent mouseEvent) {
         NavigationUtil.loadPane(DashBoardFormController.class ,navPane, "Session", "/view/sessionTable.fxml");
+
+    }
+
+    @FXML
+    public void btnAppointmentOnMouseClicked(MouseEvent mouseEvent) {
+        NavigationUtil.loadPane(DashBoardFormController.class ,navPane, "Session", "/view/appointmentTable.fxml");
 
     }
 }

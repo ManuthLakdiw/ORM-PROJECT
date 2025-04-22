@@ -6,12 +6,14 @@ import lk.ijse.orm.ormproject.dao.DaoTypes;
 import lk.ijse.orm.ormproject.dao.custom.ProgrammeDao;
 import lk.ijse.orm.ormproject.dao.custom.TherapistDao;
 import lk.ijse.orm.ormproject.dao.custom.TherapySessionDao;
-import lk.ijse.orm.ormproject.dto.TherapistDto;
 import lk.ijse.orm.ormproject.dto.TherapySessionDto;
 import lk.ijse.orm.ormproject.entity.Programme;
 import lk.ijse.orm.ormproject.entity.Therapist;
 import lk.ijse.orm.ormproject.entity.TherapySession;
+import lk.ijse.orm.ormproject.exception.ScheduleConflictException;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -129,4 +131,58 @@ public class TherapySessionBoImpl implements TherapySessionBo {
         }
         return therapistNames;
     }
+
+    @Override
+    public boolean iScheduleConflict(String id,LocalDate scheduleDate, String program, LocalTime newStartTime, LocalTime newEndTime, String therapist) throws Exception {
+        List<TherapySession> allSessions = therapySessionDao.getAll();
+        String therapistID = null;
+        Optional<Therapist> therapistByName = therapistDao.getTherapistByName(therapist);
+        if (therapistByName.isPresent()) {
+            therapistID = therapistByName.get().getId();
+        }
+        for (TherapySession session : allSessions) {
+            if (session.getId().equals(id)) {
+                continue;
+            }
+            if (
+                    session.getDate().isEqual(scheduleDate) &&
+                            session.getProgramme().getProgrammeName().equals(program) &&
+                            session.getTherapist().equals(therapistID)
+            ) {
+                LocalTime existingStart = session.getStartTime();
+                LocalTime existingEnd = session.getEndTime();
+
+                boolean isOverlapping = newStartTime.isBefore(existingEnd) && newEndTime.isAfter(existingStart);
+
+
+                if (isOverlapping) {
+                    throw new ScheduleConflictException(
+                            "Schedule conflict detected on " + scheduleDate + " between " + existingStart + " and " + existingEnd
+                    );
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public TherapySessionDto getExitingSession(String id) throws Exception {
+        TherapySessionDto therapySessionDto = new TherapySessionDto();
+        Optional<TherapySession> byId = therapySessionDao.findById(id);
+        if (byId.isPresent()) {
+            therapySessionDto.setId(byId.get().getId());
+            therapySessionDto.setProgramme(byId.get().getProgramme().getProgrammeName());
+            Optional<Therapist> therapist = therapistDao.findById(byId.get().getTherapist());
+            if (therapist.isPresent()) {
+                therapySessionDto.setTherapist(therapist.get().getName());
+            }
+            therapySessionDto.setStartTime(byId.get().getStartTime());
+            therapySessionDto.setEndTime(byId.get().getEndTime());
+            therapySessionDto.setDate(byId.get().getDate());
+            return therapySessionDto;
+        }
+        return null;
+    }
+
+
 }

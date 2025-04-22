@@ -79,11 +79,12 @@ public class SessionActionFormController implements Initializable {
 
 
     @FXML
-    void btnActionOnMouseClicked(MouseEvent event) {
+    void btnActionOnMouseClicked(MouseEvent event) throws Exception {
 
         if (btnAction.getText().equalsIgnoreCase("Save")) {
 
             if (isAllFieldsValidForSaveOrUpdate()) {
+
                 TherapySessionDto therapySessionDto = new TherapySessionDto();
                 therapySessionDto.setId(lblID.getText());
                 therapySessionDto.setProgramme(cmbProgramme.getValue());
@@ -96,6 +97,22 @@ public class SessionActionFormController implements Initializable {
 
                 therapySessionDto.setStartTime(LocalTime.parse(startTimeStr.toUpperCase(), formatter));
                 therapySessionDto.setEndTime(LocalTime.parse(endTimeStr.toUpperCase(), formatter));
+
+                try {
+                    if (therapySessionBo.iScheduleConflict(
+                            lblID.getText(),
+                            dpDate.getValue(),
+                            cmbProgramme.getValue(),
+                            therapySessionDto.getStartTime(),
+                            therapySessionDto.getEndTime(),
+                            cmbTherapist.getValue())) {
+
+                    }
+                } catch (Exception e) {
+                  AlertUtil.setInformationAlert(getClass(),"",e.getMessage(), false);
+                  return;
+
+                }
                 try {
                     boolean isSave = therapySessionBo.saveTherapySession(therapySessionDto);
                     if (isSave) {
@@ -117,6 +134,8 @@ public class SessionActionFormController implements Initializable {
                 );
             }
         }else {
+
+            boolean isExits = false;
             if (isAllFieldsValidForSaveOrUpdate()) {
                 TherapySessionDto therapySessionDto = new TherapySessionDto();
                 therapySessionDto.setId(lblID.getText());
@@ -130,6 +149,39 @@ public class SessionActionFormController implements Initializable {
 
                 therapySessionDto.setStartTime(LocalTime.parse(startTimeStr.toUpperCase(), formatter));
                 therapySessionDto.setEndTime(LocalTime.parse(endTimeStr.toUpperCase(), formatter));
+
+
+                TherapySessionDto exitingSession = therapySessionBo.getExitingSession(lblID.getText());
+                if (exitingSession != null) {
+
+                    if (exitingSession.getProgramme().equals(cmbProgramme.getValue()) &&
+                            exitingSession.getTherapist().equals(cmbTherapist.getValue()) &&
+                            exitingSession.getDate().equals(dpDate.getValue()) &&
+                            exitingSession.getStartTime().equals(LocalTime.parse(startTimeStr.toUpperCase(), formatter)) &&
+                            exitingSession.getEndTime().equals(LocalTime.parse(endTimeStr.toUpperCase(), formatter))
+
+                    ) {
+                        isExits = true;
+                    }
+                }
+
+                if (!isExits) {
+                    try {
+                        if (therapySessionBo.iScheduleConflict(
+                                lblID.getText(),
+                                dpDate.getValue(),
+                                cmbProgramme.getValue(),
+                                therapySessionDto.getStartTime(),
+                                therapySessionDto.getEndTime(),
+                                cmbTherapist.getValue())) {
+
+                        }
+                    } catch (Exception e) {
+                        AlertUtil.setInformationAlert(getClass(),"",e.getMessage(), false);
+                        return;
+
+                    }
+                }
 
                 try {
                     boolean isUpdate = therapySessionBo.updateTherapySession(therapySessionDto);

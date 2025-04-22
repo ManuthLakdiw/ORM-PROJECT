@@ -1,10 +1,10 @@
 package lk.ijse.orm.ormproject.bo.custom;
 
 import lk.ijse.orm.ormproject.bo.SuperBo;
-import lk.ijse.orm.ormproject.dto.TherapistDto;
 import lk.ijse.orm.ormproject.dto.TherapySessionDto;
-import lk.ijse.orm.ormproject.entity.TherapySession;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,5 +22,6 @@ public interface TherapySessionBo extends SuperBo {
     boolean updateTherapySession(TherapySessionDto therapySessionDto) throws Exception;
     Optional<List<String>> getAllProgrammeNamesForScheduleSession() throws Exception;
     List<String> getAllTherapistNamesByTherapyProgram(String programmeName) throws Exception;
-
+    boolean iScheduleConflict(String id , LocalDate scheduleDate, String program, LocalTime newStartTime, LocalTime newEndTime, String value) throws Exception;
+    TherapySessionDto getExitingSession(String id) throws Exception;
 }
