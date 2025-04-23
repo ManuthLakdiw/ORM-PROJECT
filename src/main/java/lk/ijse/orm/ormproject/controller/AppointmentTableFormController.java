@@ -23,6 +23,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.net.URL;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -71,6 +73,11 @@ public class AppointmentTableFormController implements Initializable {
 
         );
 
+        if (appointmentActionFormController != null) {
+            appointmentActionFormController.setAppointmentTableFormController(this);
+            this.appointmentActionFormController = appointmentActionFormController;
+        }
+
     }
 
     public void loadTable() {
@@ -103,7 +110,12 @@ public class AppointmentTableFormController implements Initializable {
         appointmentTm.setId(appointmentDto.getId());
         appointmentTm.setPatient(appointmentDto.getPatient());
         appointmentTm.setSession(appointmentDto.getSession());
-        appointmentTm.setTime(appointmentDto.getTime());
+
+        LocalTime fullTime = appointmentDto.getTime();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        String formattedTime = fullTime.format(formatter);
+
+        appointmentTm.setTime(LocalTime.parse(formattedTime));
         appointmentTm.setUpdateBtn(updateBtn);
         appointmentTm.setDeleteBtn(deleteBtn);
 
@@ -163,6 +175,9 @@ public class AppointmentTableFormController implements Initializable {
         colSession.setCellValueFactory(new PropertyValueFactory<>("session"));
         colUpdate.setCellValueFactory(new PropertyValueFactory<>("updateBtn"));
         colTIme.setCellValueFactory(new PropertyValueFactory<>("time"));
+
+        tblAppointment.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
 
         loadTable();
     }

@@ -25,5 +25,6 @@ public interface AppointmentBo extends SuperBo {
     boolean updateAppointment(AppointmentDto appointmentDto) throws Exception;
     List<PatientDto> getAllPatientsForAppointment() throws Exception;
     List<TherapySessionDto> getAllSessionsForAppointment() throws Exception;
-
+    String getAppointmentPlacedNumberBySessionId(String sessionId) throws Exception;
+    String getPatientEmailForSendAppointmentDetails(String id) throws Exception;
 }

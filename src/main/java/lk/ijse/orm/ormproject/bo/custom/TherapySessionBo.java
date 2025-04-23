@@ -24,4 +24,5 @@ public interface TherapySessionBo extends SuperBo {
     List<String> getAllTherapistNamesByTherapyProgram(String programmeName) throws Exception;
     boolean iScheduleConflict(String id , LocalDate scheduleDate, String program, LocalTime newStartTime, LocalTime newEndTime, String value) throws Exception;
     TherapySessionDto getExitingSession(String id) throws Exception;
+    TherapySessionDto getSession(String id) throws Exception;
 }

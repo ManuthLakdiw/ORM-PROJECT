@@ -99,4 +99,22 @@ public class AppointmentDaoImpl implements AppointmentDao {
         String lastPK = session.createQuery("SELECT a.id from Appointment a order by a.id desc", String.class).setMaxResults(1).uniqueResult();
         return Optional.ofNullable(lastPK);
     }
+
+
+    @Override
+    public Optional<Integer> getAppointmentCountBySession(String session) throws Exception {
+        Session sn = FactoryConfiguration.getInstance().getSession();
+        try {
+            Integer count = sn.createNativeQuery(
+                            "SELECT COUNT(*) FROM appointment_table WHERE therapySession_id = :session AND date >= CURRENT_DATE", Integer.class)
+                    .setParameter("session", session)
+                    .uniqueResult();
+
+            return Optional.ofNullable(count);
+        } finally {
+            sn.close();
+        }
+    }
+
+
 }

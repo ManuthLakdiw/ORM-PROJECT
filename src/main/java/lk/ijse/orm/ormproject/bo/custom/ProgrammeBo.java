@@ -20,6 +20,7 @@ public interface ProgrammeBo extends SuperBo {
     String generateNewProgrammeID() throws Exception;
     boolean deleteProgramme(String id) throws Exception;
     boolean updateProgramme(ProgrammeDto programmeDto) throws Exception;
+    ProgrammeDto getProgramme(String id) throws Exception;
 
 
 

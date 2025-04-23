@@ -1,9 +1,6 @@
 package lk.ijse.orm.ormproject.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,4 +34,7 @@ public class Appointment implements SuperEntity {
 
     @ManyToOne
     private TherapySession therapySession;
+
+    @OneToOne (mappedBy = "appointment")
+    private Payment payment;
 }

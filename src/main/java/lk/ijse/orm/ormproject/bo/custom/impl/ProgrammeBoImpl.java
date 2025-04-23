@@ -76,4 +76,18 @@ public class ProgrammeBoImpl implements ProgrammeBo {
         programme.setFee(programmeDto.getFee());
         return programmeDao.update(programme);
     }
+
+    @Override
+    public ProgrammeDto getProgramme(String id) throws Exception {
+        Optional<Programme> byId = programmeDao.findById(id);
+        if (byId.isPresent()) {
+            ProgrammeDto programmeDto = new ProgrammeDto();
+            programmeDto.setId(byId.get().getId());
+            programmeDto.setProgrammeName(byId.get().getProgrammeName());
+            programmeDto.setDuration(byId.get().getDuration());
+            programmeDto.setFee(byId.get().getFee());
+            return programmeDto;
+        }
+        return null;
+    }
 }

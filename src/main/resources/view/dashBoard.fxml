@@ -54,6 +54,11 @@
                   <Font size="20.0" />
                </font>
             </Button>
+            <Button fx:id="btnPayment" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#btnPaymentOnMouseClicked" prefHeight="59.0" prefWidth="290.0" text="Payment">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
       <Pane fx:id="navPane" layoutX="329.0" layoutY="104.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1035.0" style="-fx-background-color: gray;" />

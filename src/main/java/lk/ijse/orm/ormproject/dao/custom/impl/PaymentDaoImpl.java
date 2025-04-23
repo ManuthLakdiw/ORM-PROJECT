@@ -1,13 +1,11 @@
 package lk.ijse.orm.ormproject.dao.custom.impl;
 
 import lk.ijse.orm.ormproject.config.FactoryConfiguration;
-import lk.ijse.orm.ormproject.dao.custom.PatientDao;
-import lk.ijse.orm.ormproject.entity.Patient;
+import lk.ijse.orm.ormproject.dao.custom.PaymentDao;
+import lk.ijse.orm.ormproject.entity.Payment;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,9 +15,9 @@ import java.util.Optional;
  * @project ORM-PROJECT
  * @github https://github.com/ManuthLakdiw
  */
-public class PatientDaoImpl implements PatientDao {
+public class PaymentDaoImpl implements PaymentDao {
     @Override
-    public boolean save(Patient entity) throws Exception {
+    public boolean save(Payment entity) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction tx = session.beginTransaction();
 
@@ -38,19 +36,20 @@ public class PatientDaoImpl implements PatientDao {
     }
 
     @Override
-    public boolean update(Patient entity) throws Exception {
+    public boolean update(Payment entity) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction tx = session.beginTransaction();
 
         try {
-            Patient patient = session.get(Patient.class, entity.getId());
-            patient.setTitle(entity.getTitle());
-            patient.setName(entity.getName());
-            patient.setDob(entity.getDob());
-            patient.setHomeAddress(entity.getHomeAddress());
-            patient.setTelephone(entity.getTelephone());
-            patient.setEmailAddress(entity.getEmailAddress());
-            session.merge(patient);
+            Payment payment = session.get(Payment.class, entity.getId());
+            payment.setAppointment(entity.getAppointment());
+            payment.setSessionFee(entity.getSessionFee());
+            payment.setPaidAmount(entity.getPaidAmount());
+            payment.setDueAmount(entity.getDueAmount());
+            payment.setStatus(entity.getStatus());
+            payment.setDate(entity.getDate());
+
+            session.merge(payment);
             tx.commit();
             return true;
 
@@ -58,11 +57,9 @@ public class PatientDaoImpl implements PatientDao {
             tx.rollback();
             e.printStackTrace();
             return false;
-
         }finally {
             session.close();
         }
-
     }
 
     @Override
@@ -71,8 +68,8 @@ public class PatientDaoImpl implements PatientDao {
         Transaction tx = session.beginTransaction();
 
         try {
-            Patient patient = session.get(Patient.class, id);
-            session.remove(patient);
+            Payment payment = session.get(Payment.class, id);
+            session.remove(payment);
             tx.commit();
             return true;
         }catch (Exception e){
@@ -85,25 +82,29 @@ public class PatientDaoImpl implements PatientDao {
     }
 
     @Override
-    public List<Patient> getAll() throws Exception {
+    public List<Payment> getAll() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
-        List<Patient> patientList = session.createQuery("from Patient", Patient.class).list();
-        return patientList;
+
+        List<Payment> payments = session.createQuery("from Payment").list();
+        session.close();
+        return payments;
 
     }
 
     @Override
-    public Optional<Patient> findById(String pk) throws Exception {
-       Session session = FactoryConfiguration.getInstance().getSession();
-       Patient patient = session.get(Patient.class, pk);
-       session.close();
-       return Optional.ofNullable(patient);
+    public Optional<Payment> findById(String pk) throws Exception {
+
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Payment payment = session.get(Payment.class, pk);
+        session.close();
+        return Optional.ofNullable(payment);
     }
 
     @Override
     public Optional<String> lastPK() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
-        String lastPK = session.createQuery("SELECT p.id from Patient p order by p.id desc", String.class).setMaxResults(1).uniqueResult();
+        String lastPK = session.createQuery("SELECT pay.id from Payment pay order by pay.id desc", String.class).setMaxResults(1).uniqueResult();
+        session.close();
         return Optional.ofNullable(lastPK);
     }
 }

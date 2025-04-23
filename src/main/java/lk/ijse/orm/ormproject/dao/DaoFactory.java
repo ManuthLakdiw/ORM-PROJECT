@@ -25,6 +25,7 @@ public class DaoFactory {
             case THERAPIST -> (T) new TherapistDaoImpl();
             case THERAPYSESSION -> (T) new TherapySessionDaoImpl();
             case APPOINTMENT -> (T) new AppointmentDaoImpl();
+            case PAYMENT -> (T) new PaymentDaoImpl();
         };
     }
 }

@@ -121,6 +121,9 @@ public class AppointmentBoImpl implements AppointmentBo {
         List<TherapySession> all = therapySessionDao.getAll();
         List<TherapySessionDto> therapySessionDtos = new ArrayList<>();
         for (TherapySession therapySession : all) {
+            if (therapySession.getDate().isBefore(LocalDate.now())) {
+                continue;
+            }
             TherapySessionDto therapySessionDto = new TherapySessionDto();
             therapySessionDto.setId(therapySession.getId());
 
@@ -134,9 +137,27 @@ public class AppointmentBoImpl implements AppointmentBo {
             therapySessionDto.setStartTime(therapySession.getStartTime());
             therapySessionDto.setEndTime(therapySession.getEndTime());
             therapySessionDtos.add(therapySessionDto);
-
         }
         return therapySessionDtos;
     }
 
+    @Override
+    public String getAppointmentPlacedNumberBySessionId(String sessionId) throws Exception {
+        Optional<Integer> appointmentCountBySession = appointmentDao.getAppointmentCountBySession(sessionId);
+        if (appointmentCountBySession.isPresent()) {
+            return appointmentCountBySession.get().toString();
+        }
+        return "0";
+    }
+
+    @Override
+    public String getPatientEmailForSendAppointmentDetails(String id) throws Exception {
+        Optional<Patient> byId = patientDao.findById(id);
+        if (byId.isPresent()) {
+            System.out.println("EMAIL ADRRESS IS : " + byId.get().getEmailAddress());
+            return byId.get().getEmailAddress();
+
+        }
+        return null;
+    }
 }

@@ -37,6 +37,9 @@ public class DashBoardFormController {
     @FXML
     private Button btnAppointment;
 
+    @FXML
+    private Button btnPayment;
+
 
 
     @FXML
@@ -88,13 +91,9 @@ public class DashBoardFormController {
 
     }
 
-
-
-    public void manageRoleTask(boolean visible) {
-        btnCheck.setVisible(visible);
-        btnCheck.setManaged(visible);
-        btnProgramme.setVisible(visible);
-        btnProgramme.setManaged(visible);
+    @FXML
+    void btnPaymentOnMouseClicked(MouseEvent event) {
+        NavigationUtil.loadPane(DashBoardFormController.class ,navPane, "Payment", "/view/paymentTable.fxml");
 
 
     }
@@ -107,7 +106,20 @@ public class DashBoardFormController {
 
     @FXML
     public void btnAppointmentOnMouseClicked(MouseEvent mouseEvent) {
-        NavigationUtil.loadPane(DashBoardFormController.class ,navPane, "Session", "/view/appointmentTable.fxml");
+        NavigationUtil.loadPane(DashBoardFormController.class ,navPane, "Appointment", "/view/appointmentTable.fxml");
 
     }
+
+
+
+    public void manageRoleTask(boolean visible) {
+        btnCheck.setVisible(visible);
+        btnCheck.setManaged(visible);
+        btnProgramme.setVisible(visible);
+        btnProgramme.setManaged(visible);
+
+
+    }
+
+
 }

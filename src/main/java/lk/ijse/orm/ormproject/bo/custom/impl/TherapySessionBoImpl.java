@@ -184,5 +184,20 @@ public class TherapySessionBoImpl implements TherapySessionBo {
         return null;
     }
 
+    @Override
+    public TherapySessionDto getSession(String id) throws Exception {
+        Optional<TherapySession> byId = therapySessionDao.findById(id);
+        if (byId.isPresent()) {
+            TherapySessionDto therapySessionDto = new TherapySessionDto();
+            therapySessionDto.setId(byId.get().getId());
+            therapySessionDto.setProgramme(byId.get().getProgramme().getId());
+            therapySessionDto.setStartTime(byId.get().getStartTime());
+            therapySessionDto.setEndTime(byId.get().getEndTime());
+            therapySessionDto.setDate(byId.get().getDate());
+            return therapySessionDto;
+        }
+        return null;
+    }
+
 
 }
