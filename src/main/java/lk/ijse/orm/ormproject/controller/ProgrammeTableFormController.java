@@ -1,5 +1,7 @@
 package lk.ijse.orm.ormproject.controller;
 
+import de.jensd.fx.glyphs.materialicons.MaterialIcon;
+import de.jensd.fx.glyphs.materialicons.utils.MaterialIconFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -80,8 +82,12 @@ public class ProgrammeTableFormController implements Initializable {
 
     private ProgrammeTm createTableRow(ProgrammeDto programmeDto) {
 
-        Button updateBtn = createStyledButton("Update", "update-btn");
-        Button deleteBtn = createStyledButton("Delete", "delete-btn");
+        Button updateBtn = createStyledButton("", "update-btn");
+        Button deleteBtn = createStyledButton("", "delete-btn");
+
+        deleteBtn.setGraphic(MaterialIconFactory.get().createIcon(MaterialIcon.DELETE, "16px"));
+        updateBtn.setGraphic(MaterialIconFactory.get().createIcon(MaterialIcon.EDIT, "16px"));
+
 
         setDeleteButtonAction(deleteBtn,programmeDto);
         setUpdateButtonAction(updateBtn,programmeDto);

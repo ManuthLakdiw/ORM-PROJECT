@@ -113,10 +113,13 @@ public class DashBoardFormController {
 
 
     public void manageRoleTask(boolean visible) {
-        btnCheck.setVisible(visible);
-        btnCheck.setManaged(visible);
         btnProgramme.setVisible(visible);
         btnProgramme.setManaged(visible);
+        btnTherapist.setVisible(visible);
+        btnTherapist.setManaged(visible);
+        btnUser.setVisible(visible);
+        btnUser.setManaged(visible);
+
 
 
     }

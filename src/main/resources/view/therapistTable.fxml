@@ -2,9 +2,11 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane fx:id="therapistPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1035.0" styleClass="pane" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.orm.ormproject.controller.TherapistTableFromController">
    <children>
@@ -20,6 +22,11 @@
          </columns>
       </TableView>
       <Button fx:id="btnAdd" layoutX="832.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#btnAddOnMouseClicked" prefHeight="40.0" prefWidth="167.0" styleClass="btn-add-user" text="+ Add" textFill="WHITE" />
+      <Label layoutX="56.0" layoutY="26.0" prefHeight="17.0" prefWidth="399.0" text="Therapist Manage" textFill="#f2b500">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
    </children>
    <stylesheets>
       <URL value="@../styles/normalize.css" />
