@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
@@ -13,11 +14,11 @@
       <TableView fx:id="tblSession" layoutX="56.0" layoutY="241.0" prefHeight="362.0" prefWidth="924.0">
          <columns>
             <TableColumn fx:id="colID" prefWidth="72.0" text="ID" />
-            <TableColumn fx:id="colProgrammeName" minWidth="3.1930389404296875" prefWidth="215.0" text="Programme Name" />
-            <TableColumn fx:id="colTherapistName" prefWidth="195.0" text="Therapist Name" />
-            <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="107.0" text="Date" />
-            <TableColumn fx:id="colStartTime" minWidth="-Infinity" prefWidth="96.0" text="Start Time" />
-            <TableColumn fx:id="colEndTime" minWidth="70.0" prefWidth="96.0" text="End Time" />
+            <TableColumn fx:id="colProgrammeName" minWidth="3.1930389404296875" prefWidth="143.0" text="Programme " />
+            <TableColumn fx:id="colTherapistName" prefWidth="144.0" text="Therapist" />
+            <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="152.0" text="Date" />
+            <TableColumn fx:id="colStartTime" minWidth="-Infinity" prefWidth="137.0" text="Start Time" />
+            <TableColumn fx:id="colEndTime" minWidth="70.0" prefWidth="133.0" text="End Time" />
             <TableColumn fx:id="colUpdate" minWidth="53.0" prefWidth="71.0" />
             <TableColumn fx:id="colDelete" minWidth="14.0" prefWidth="71.0" />
          </columns>
@@ -28,6 +29,7 @@
             <Font size="40.0" />
          </font>
       </Label>
+      <TextField fx:id="txtFindSession" layoutX="56.0" layoutY="158.0" onKeyReleased="#txtFindSessionOnKeyAction" prefHeight="25.0" prefWidth="503.0" promptText="Type here for find Session" styleClass="usr-input" />
    </children>
    <stylesheets>
       <URL value="@../styles/normalize.css" />

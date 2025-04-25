@@ -48,11 +48,12 @@ public class TherapySessionBoImpl implements TherapySessionBo {
         for (TherapySession therapySession : all) {
             TherapySessionDto therapySessionDto = new TherapySessionDto();
             therapySessionDto.setId(therapySession.getId());
-            therapySessionDto.setProgramme(therapySession.getProgramme().getProgrammeName());
-            Optional<Therapist> byId = therapistDao.findById(therapySession.getTherapist());
-            if (byId.isPresent()) {
-                therapySessionDto.setTherapist(byId.get().getName());
-            }
+            therapySessionDto.setProgramme(therapySession.getProgramme().getId());
+//            Optional<Therapist> byId = therapistDao.findById(therapySession.getTherapist());
+//            if (byId.isPresent()) {
+//
+//            }
+            therapySessionDto.setTherapist(therapySession.getTherapist());
             therapySessionDto.setDate(therapySession.getDate());
             therapySessionDto.setStartTime(therapySession.getStartTime());
             therapySessionDto.setEndTime(therapySession.getEndTime());

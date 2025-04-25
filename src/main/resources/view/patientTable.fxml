@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
@@ -26,6 +27,7 @@
             <Font size="40.0" />
          </font>
       </Label>
+      <TextField fx:id="txtFindPatient" layoutX="56.0" layoutY="158.0" onKeyReleased="#txtFindPatientOnKeyAction" prefHeight="25.0" prefWidth="503.0" promptText="Type here for find Patient" styleClass="usr-input" />
    </children>
    <stylesheets>
       <URL value="@../styles/normalize.css" />

@@ -4,12 +4,16 @@ import de.jensd.fx.glyphs.materialicons.MaterialIcon;
 import de.jensd.fx.glyphs.materialicons.utils.MaterialIconFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Button;
@@ -26,6 +30,7 @@ import lombok.Setter;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 /**
  * @author manuthlakdiv
@@ -74,6 +79,13 @@ public class PatientTableFormController implements Initializable {
     @FXML
     private TableView<PatientTm> tblPatient;
 
+
+    @FXML
+    private TextField txtFindPatient;
+
+
+    FilteredList filter;
+
     PatientBo patientBo = BoFactory.getInstance().getBo(BoTypes.PATIENT);
 
     @FXML
@@ -108,6 +120,8 @@ public class PatientTableFormController implements Initializable {
             }
 
             tblPatient.setItems(patientTms);
+
+            filter = new FilteredList(patientTms, e -> true);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -226,4 +240,26 @@ public class PatientTableFormController implements Initializable {
     }
 
 
+    public void txtFindPatientOnKeyAction(KeyEvent keyEvent) {
+        txtFindPatient.textProperty().addListener((observable, oldValue, newValue) -> {
+            filter.setPredicate((Predicate<? super PatientTm>) (PatientTm patientTm) -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true; // Return all subjects if the search text is empty
+                } else {
+                    // Perform case-insensitive matching
+                    return patientTm.getId().toLowerCase().contains(newValue.toLowerCase()) ||
+                            patientTm.getName().toLowerCase().contains(newValue.toLowerCase()) ||
+                            patientTm.getTitle().toLowerCase().contains(newValue.toLowerCase()) ||
+                            patientTm.getEmailAddress().toLowerCase().contains(newValue.toLowerCase()) ||
+                            patientTm.getTelephone().toLowerCase().contains(newValue.toLowerCase()) ||
+                            patientTm.getHomeAddress().toLowerCase().contains(newValue.toLowerCase());
+                }
+            });
+
+            SortedList<PatientTm> sortedList = new SortedList<>(filter);
+            sortedList.comparatorProperty().bind(tblPatient.comparatorProperty());
+            tblPatient.setItems(sortedList);
+        });
+
+    }
 }

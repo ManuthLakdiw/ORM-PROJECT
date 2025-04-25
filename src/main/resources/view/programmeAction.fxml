@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="462.0" prefWidth="463.0" styleClass="pane" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.orm.ormproject.controller.ProgrammeActionFormController">
    <children>
-      <Label fx:id="lblTitle" alignment="CENTER" layoutX="119.0" layoutY="14.0" prefHeight="20.0" prefWidth="219.0" text="PROGRAMME REGISTRATION" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="lblTitle" alignment="CENTER" layoutX="119.0" layoutY="14.0" prefHeight="20.0" prefWidth="219.0" text="PROGRAMME REGISTRATION" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
@@ -27,12 +27,12 @@
             <String fx:value="lbl-id" />
          </styleClass>
       </Label>
-      <Line endX="124.0" layoutX="216.0" layoutY="38.0" startX="-100.0" stroke="#1486cd" style="-fx-opacity: 0.5;" />
-      <Label layoutX="14.0" layoutY="62.0" text="ID" textFill="WHITE" />
+      <Line endX="124.0" layoutX="216.0" layoutY="38.0" startX="-100.0" stroke="#2ecc71" style="-fx-opacity: 0.5;" />
+      <Label layoutX="14.0" layoutY="62.0" text="ID" />
       <TextField fx:id="txtProgrammeName" layoutX="14.0" layoutY="198.0" prefHeight="34.0" prefWidth="429.0" promptText="ex: Cognitive Behavioral Therapy (CBT)" styleClass="usr-input" />
-      <Label layoutX="14.0" layoutY="176.0" text="Programme Name" textFill="WHITE" />
-      <Label layoutX="14.0" layoutY="301.0" text="Duration" textFill="WHITE" />
-      <Label layoutX="251.0" layoutY="301.0" text="Fee" textFill="WHITE" />
+      <Label layoutX="14.0" layoutY="176.0" text="Programme Name" />
+      <Label layoutX="14.0" layoutY="301.0" text="Duration" />
+      <Label layoutX="251.0" layoutY="301.0" text="Fee" />
       <Button fx:id="btnAction" layoutX="363.0" layoutY="409.0" mnemonicParsing="false" onMouseClicked="#btnActionOnMouseClicked" text="Save">
          <styleClass>
             <String fx:value="btn" />

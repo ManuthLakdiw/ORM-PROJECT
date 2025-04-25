@@ -3,12 +3,16 @@ import de.jensd.fx.glyphs.materialicons.MaterialIcon;
 import de.jensd.fx.glyphs.materialicons.utils.MaterialIconFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import lk.ijse.orm.ormproject.bo.BoFactory;
@@ -24,6 +28,7 @@ import lombok.Setter;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class PaymentTableFormController implements Initializable {
 
@@ -70,6 +75,12 @@ public class PaymentTableFormController implements Initializable {
     private TableView<PaymentTm> tblPayment;
 
     @FXML
+    private TextField txtFindPayment;
+
+    FilteredList filter;
+
+
+    @FXML
     void btnAddOnMouseClicked(MouseEvent event) {
         PaymentActionFormController paymentActionFormController = NavigationUtil.loadSubStage(
                 PaymentTableFormController.class,
@@ -94,6 +105,8 @@ public class PaymentTableFormController implements Initializable {
                 paymentTms.add(paymentTm);
             }
             tblPayment.setItems(paymentTms);
+
+            filter = new FilteredList(paymentTms, e -> true);
 
 
         } catch (Exception e) {
@@ -187,5 +200,28 @@ public class PaymentTableFormController implements Initializable {
         tblPayment.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         loadPaymentTable();
+    }
+
+    public void txtFindPaymentOnKeyAction(KeyEvent keyEvent) {
+        txtFindPayment.textProperty().addListener((observable, oldValue, newValue) -> {
+            filter.setPredicate((Predicate<? super PaymentTm>) (PaymentTm paymentTm) -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true; // Return all subjects if the search text is empty
+                } else {
+                    // Perform case-insensitive matching
+                    return paymentTm.getId().toLowerCase().contains(newValue.toLowerCase()) ||
+                            paymentTm.getAppointment().toLowerCase().contains(newValue.toLowerCase()) ||
+                            paymentTm.getStatus().toLowerCase().contains(newValue.toLowerCase()) ||
+                           String.valueOf(paymentTm.getDate()).toLowerCase().contains(newValue.toLowerCase()) ||
+                            String.valueOf(paymentTm.getSessionFee()).toLowerCase().contains(newValue.toLowerCase()) ||
+                            String.valueOf(paymentTm.getPaidAmount()).toLowerCase().contains(newValue.toLowerCase()) ||
+                            String.valueOf(paymentTm.getDueAmount()).toLowerCase().contains(newValue.toLowerCase());
+                }
+            });
+
+            SortedList<PaymentTm> sortedList = new SortedList<>(filter);
+            sortedList.comparatorProperty().bind(tblPayment.comparatorProperty());
+            tblPayment.setItems(sortedList);
+        });
     }
 }

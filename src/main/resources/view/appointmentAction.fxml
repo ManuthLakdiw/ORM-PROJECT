@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="536.0" prefWidth="463.0" styleClass="pane" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.orm.ormproject.controller.AppointmentActionFormController">
    <children>
-      <Label fx:id="lblTitle" alignment="CENTER" layoutX="119.0" layoutY="14.0" prefHeight="20.0" prefWidth="219.0" text="APPOINTMENT" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="lblTitle" alignment="CENTER" layoutX="119.0" layoutY="14.0" prefHeight="20.0" prefWidth="219.0" text="APPOINTMENT" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
@@ -25,9 +25,9 @@
             <String fx:value="lbl-id" />
          </styleClass>
       </Label>
-      <Line endX="124.0" layoutX="216.0" layoutY="38.0" startX="-100.0" stroke="#1486cd" style="-fx-opacity: 0.5;" />
-      <Label layoutX="14.0" layoutY="62.0" text="ID" textFill="WHITE" />
-      <Label layoutX="14.0" layoutY="154.0" text="Patient" textFill="WHITE" />
+      <Line endX="124.0" layoutX="216.0" layoutY="38.0" startX="-100.0" stroke="#2ecc71" style="-fx-opacity: 0.5;" />
+      <Label layoutX="14.0" layoutY="62.0" text="ID" />
+      <Label layoutX="14.0" layoutY="154.0" text="Patient" />
       <Button fx:id="btnAction" layoutX="363.0" layoutY="477.0" mnemonicParsing="false" onMouseClicked="#btnActionOnMouseClicked" text="Save">
          <styleClass>
             <String fx:value="btn" />
@@ -41,32 +41,32 @@
          </styleClass>
       </Button>
       <ComboBox fx:id="cmbPatient" layoutX="14.0" layoutY="175.0" onAction="#cmbPatientOnSelectAction" prefHeight="34.0" prefWidth="202.0" promptText="Select a Patient" styleClass="usr-input" />
-      <Label fx:id="lblPatientName" layoutX="97.0" layoutY="218.0" prefHeight="20.0" prefWidth="363.0" textFill="#00ff6a" />
-      <Label layoutX="14.0" layoutY="284.0" text="Session" textFill="WHITE" />
+      <Label fx:id="lblPatientName" layoutX="97.0" layoutY="236.0" prefHeight="20.0" prefWidth="363.0" textFill="#00ff6a" />
+      <Label layoutX="14.0" layoutY="284.0" text="Session" />
       <ComboBox fx:id="cmbSession" layoutX="14.0" layoutY="305.0" onAction="#cmbSessionOnSelectAction" prefHeight="34.0" prefWidth="202.0" promptText="Select a Session" styleClass="usr-input" />
-      <Label fx:id="lblSessionName" layoutX="104.0" layoutY="345.0" prefHeight="20.0" prefWidth="225.0" textFill="#00ff6a" />
-      <Label fx:id="lblTherapist" layoutX="84.0" layoutY="371.0" prefHeight="20.0" prefWidth="225.0" textFill="#00ff6a" />
-      <Label layoutX="14.0" layoutY="218.0" text="patient name : " textFill="WHITE" />
-      <Label layoutX="14.0" layoutY="346.0" text="session name :" textFill="WHITE" />
-      <Label layoutX="14.0" layoutY="371.0" text="session by :" textFill="WHITE" />
-      <Label fx:id="lblScheduledDate" alignment="CENTER" layoutX="90.0" layoutY="395.0" prefHeight="20.0" prefWidth="92.0" textFill="#00ff6a">
+      <Label fx:id="lblSessionName" layoutX="104.0" layoutY="369.0" prefHeight="20.0" prefWidth="225.0" textFill="#00ff6a" />
+      <Label fx:id="lblTherapist" layoutX="84.0" layoutY="398.0" prefHeight="20.0" prefWidth="225.0" textFill="#00ff6a" />
+      <Label layoutX="14.0" layoutY="236.0" text="patient name : " textFill="WHITE" />
+      <Label layoutX="14.0" layoutY="370.0" text="session name :" />
+      <Label layoutX="14.0" layoutY="398.0" text="session by :" />
+      <Label fx:id="lblScheduledDate" alignment="CENTER" layoutX="90.0" layoutY="425.0" prefHeight="20.0" prefWidth="92.0" textFill="#00ff6a">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="396.0" text="Sheduled at :" textFill="WHITE" />
-      <Label layoutX="186.0" layoutY="395.0" prefHeight="20.0" prefWidth="28.0" text="from" textFill="WHITE" />
-      <Label fx:id="lblStartTime" alignment="CENTER" layoutX="214.0" layoutY="395.0" prefHeight="20.0" prefWidth="63.0" textFill="#00ff6a">
+      <Label layoutX="14.0" layoutY="426.0" text="Sheduled at :" />
+      <Label layoutX="188.0" layoutY="425.0" prefHeight="20.0" prefWidth="28.0" text="from" />
+      <Label fx:id="lblStartTime" alignment="CENTER" layoutX="216.0" layoutY="425.0" prefHeight="20.0" prefWidth="63.0" textFill="#00ff6a">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="lblEndTime" alignment="CENTER" layoutX="302.0" layoutY="395.0" prefHeight="20.0" prefWidth="63.0" textFill="#00ff6a">
+      <Label fx:id="lblEndTime" alignment="CENTER" layoutX="304.0" layoutY="425.0" prefHeight="20.0" prefWidth="63.0" textFill="#00ff6a">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="283.0" layoutY="395.0" prefHeight="20.0" prefWidth="12.0" text="to" textFill="WHITE" />
+      <Label layoutX="285.0" layoutY="425.0" prefHeight="20.0" prefWidth="12.0" text="to" />
    </children>
    <stylesheets>
       <URL value="@../styles/normalize.css" />

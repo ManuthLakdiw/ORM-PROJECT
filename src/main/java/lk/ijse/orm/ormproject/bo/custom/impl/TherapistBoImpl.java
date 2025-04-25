@@ -46,7 +46,7 @@ public class TherapistBoImpl implements TherapistBo {
 
             therapistDto.setId(therapist.getId());
             therapistDto.setName(therapist.getName());
-            therapistDto.setProgramme(therapist.getProgramme().getProgrammeName());
+            therapistDto.setProgramme(therapist.getProgramme().getId());
             therapistDto.setEmail(therapist.getEmail());
             therapistDto.setTelephone(therapist.getTelephone());
 

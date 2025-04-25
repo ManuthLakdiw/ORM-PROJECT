@@ -4,12 +4,16 @@ import de.jensd.fx.glyphs.materialicons.MaterialIcon;
 import de.jensd.fx.glyphs.materialicons.utils.MaterialIconFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import lk.ijse.orm.ormproject.bo.BoFactory;
@@ -27,6 +31,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class SessionTableFormController implements Initializable {
 
@@ -70,6 +75,12 @@ public class SessionTableFormController implements Initializable {
     private TableView<TherapySessionTm> tblSession;
 
     @FXML
+    private TextField txtFindSession;
+
+    FilteredList filter;
+
+
+    @FXML
     void btnAddOnMouseClicked(MouseEvent event) {
         SessionActionFormController sessionActionFormController = NavigationUtil.loadSubStage(
                 SessionTableFormController.class,
@@ -96,6 +107,8 @@ public class SessionTableFormController implements Initializable {
                 therapySessionTms.add(therapySessionTm);
             }
             tblSession.setItems(therapySessionTms);
+
+            filter = new FilteredList(therapySessionTms, e -> true);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -190,5 +203,27 @@ public class SessionTableFormController implements Initializable {
 
         loadSessionTable();
 
+    }
+
+    public void txtFindSessionOnKeyAction(KeyEvent keyEvent) {
+        txtFindSession.textProperty().addListener((observable, oldValue, newValue) -> {
+            filter.setPredicate((Predicate<? super TherapySessionTm>) (TherapySessionTm therapySessionTm) -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true; // Return all subjects if the search text is empty
+                } else {
+                    // Perform case-insensitive matching
+                    return therapySessionTm.getId().toLowerCase().contains(newValue.toLowerCase()) ||
+                            therapySessionTm.getTherapist().toLowerCase().contains(newValue.toLowerCase()) ||
+                            therapySessionTm.getProgramme().toLowerCase().contains(newValue.toLowerCase()) ||
+                            String.valueOf(therapySessionTm.getDate()).toLowerCase().contains(newValue.toLowerCase()) ||
+                            String.valueOf(therapySessionTm.getEndTime()).toLowerCase().contains(newValue.toLowerCase()) ||
+                            String.valueOf(therapySessionTm.getStartTime()).toLowerCase().contains(newValue.toLowerCase());
+                }
+            });
+
+            SortedList<TherapySessionTm> sortedList = new SortedList<>(filter);
+            sortedList.comparatorProperty().bind(tblSession.comparatorProperty());
+            tblSession.setItems(sortedList);
+        });
     }
 }

@@ -1,112 +1,27 @@
-.pane{
-    -fx-background-color: black;
-}
-
-.field{
-    -fx-border-color: white;
-    -fx-background-color: transparent;
+.pane {
+    -fx-background-color: #f5faf7; /* Light green background */
+    -fx-border-color: #2ecc71; /* Green border */
     -fx-border-radius: 5px;
-    -fx-text-fill: #24a0ed;
+}
+
+/* Text Fields */
+.field {
+    -fx-border-color: #2ecc71; /* Green border */
+    -fx-background-color: #ffffff; /* White background */
+    -fx-border-radius: 5px;
+    -fx-text-fill: #2d3436; /* Dark text */
     -fx-font-size: 14px;
-    -fx-letter-spacing: 10px;
+    -fx-letter-spacing: 1px;
+    -fx-padding: 8px;
 }
 
-.lbl-id{
+.field .prompt-text {
+    -fx-text-fill: #95a5a6; /* Gray prompt text */
+}
+
+/* Labels */
+.lbl-id {
     -fx-font-weight: bold;
+    -fx-text-fill: #2ecc71; /* Green text */
+    -fx-font-size: 14px;
 }
-
-
-/*.table-view .column-header-background {*/
-/*    -fx-background-color: transparent;*/
-/*}*/
-
-
-/*.table-view .table-row-cell:selected {*/
-/*    -fx-background-color: rgba(128, 128, 128, 0.5);*/
-/*    -fx-opacity: 1;*/
-/*}*/
-
-/*.table-view .table-row-cell:selected .table-cell {*/
-/*    -fx-text-fill: #ffffff;*/
-/*    -fx-border-color: #24a0ed;*/
-/*    -fx-font-size: 16px;*/
-/*    -fx-alignment: center;*/
-/*}*/
-
-/*.table-view .column-header,*/
-/*.table-view .table-cell {*/
-/*    -fx-border-color: #24a0ed;*/
-/*    -fx-border-width: 0.3px;*/
-/*    -fx-text-fill: #24a0ed  ;*/
-/*    -fx-background-color: transparent;*/
-/*    -fx-padding: 5px;*/
-/*    -fx-alignment: CENTER_LEFT;*/
-
-/*}*/
-
-/*.table-view .table-row-cell:hover {*/
-/*    -fx-border-width: 0.5px;*/
-/*    -fx-border-color:  #24a0ed;*/
-/*}*/
-
-/*!* Row styling *!*/
-/*.table-view .table-row-cell {*/
-/*    -fx-pref-height: 50px; !* Row height *!*/
-/*    -fx-pref-width: 30px; !* Row width *!*/
-/*    !*-fx-background-radius: 5px;*!*/
-/*    -fx-background-color: transparent; !* Transparent row background *!*/
-/*    -fx-text-fill: white; !* Default text color for unselected rows *!*/
-/*}*/
-
-/*!* Transparent column header *!*/
-/*.table-view .column-header {*/
-/*    -fx-pref-height: 35px;*/
-/*    -fx-background-color: #24a0ed;*/
-/*    -fx-font-family: Arial;*/
-/*}*/
-
-/*.table-view .column-header-background {*/
-/*    -fx-background-color: transparent;*/
-/*}*/
-
-/*!* Transparent ScrollPane backgrounds *!*/
-/*.table-view .scroll-bar {*/
-/*    -fx-background-color: transparent;*/
-/*}*/
-
-/*.table-view .horizontal-bar {*/
-/*    -fx-background-color: transparent;*/
-/*}*/
-
-/*.table-view .vertical-bar {*/
-/*    -fx-background-color: transparent;*/
-/*}*/
-
-/*.table-view .scroll-bar .thumb {*/
-/*    -fx-border-width: 0.5px;*/
-/*    -fx-border-radius: 5px;*/
-/*    -fx-border-color: black;*/
-/*    -fx-background-color: white; !* Solid selected row background color *!*/
-/*}*/
-
-/*!* Change the color when the scrollbar is hovered *!*/
-/*!*.table-view .scroll-bar .thumb:hover {*!*/
-/*!*    -fx-background-color: rgba(124,124,179); !* Solid selected row background color *!*!*/
-/*!*}*!*/
-
-/*.table-view .scroll-bar .track {*/
-/*    -fx-background-color: transparent;*/
-/*}*/
-/*.table-view .applicable-grades-column {*/
-/*    -fx-max-width: 200px;*/
-/*    -fx-text-overflow: ellipsis;*/
-/*    -fx-white-space: nowrap;*/
-/*    -fx-alignment: CENTER_LEFT;*/
-/*}*/
-
-/*.table-view .applicable-grades-column:hover {*/
-/*    -fx-overflow: auto;*/
-/*    -fx-white-space: normal;*/
-/*    -fx-max-height: 100px;*/
-/*    -fx-background-color: rgba(255, 255, 255, 0.9);*/
-/*}*/

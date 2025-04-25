@@ -5,10 +5,13 @@ import de.jensd.fx.glyphs.materialicons.utils.MaterialIconFactory;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -30,6 +33,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class UserTableFormController implements Initializable {
 
@@ -68,8 +72,14 @@ public class UserTableFormController implements Initializable {
     @FXML
     private TableView<UserTm> tblUser;
 
+
+    @FXML
+    private TextField txtFindUser;
+
     @FXML
     private Pane userPane;
+
+    FilteredList filter;
 
 
     @FXML
@@ -105,6 +115,8 @@ public class UserTableFormController implements Initializable {
         }
 
         tblUser.setItems(userTms);
+
+        filter = new FilteredList(userTms, e -> true);
     }
 
     private UserTm createUserRow(UserDto userDto) {
@@ -395,5 +407,28 @@ public class UserTableFormController implements Initializable {
 
 
         loadUserTable();
+    }
+
+
+    public void txtFindUserOnKeyAction(KeyEvent keyEvent) {
+        txtFindUser.textProperty().addListener((observable, oldValue, newValue) -> {
+            filter.setPredicate((Predicate<? super UserTm>) (UserTm userTm) -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                } else {
+
+                    return userTm.getId().toLowerCase().contains(newValue.toLowerCase()) ||
+                            userTm.getRole().toLowerCase().contains(newValue.toLowerCase()) ||
+                            userTm.getName().toLowerCase().contains(newValue.toLowerCase()) ||
+                            userTm.getEmail().toLowerCase().contains(newValue.toLowerCase());
+
+                }
+            });
+
+            SortedList<UserTm> sortedList = new SortedList<>(filter);
+            sortedList.comparatorProperty().bind(tblUser.comparatorProperty());
+            tblUser.setItems(sortedList);
+        });
+
     }
 }

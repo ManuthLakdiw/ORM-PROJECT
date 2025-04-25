@@ -1,0 +1,112 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="appointmentsByPatient" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aab178a9-5b3a-4e14-b8ce-b8d202371d88">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (5)"/>
+	<parameter name="patient_id" class="java.lang.String">
+		<description><![CDATA[patientID]]></description>
+	</parameter>
+	<parameter name="patientName" class="java.lang.String">
+		<description><![CDATA[patient name]]></description>
+	</parameter>
+	<parameter name="contact_number" class="java.lang.String"/>
+	<query language="SQL"><![CDATA[SELECT * FROM appointment_table WHERE patient_id = $P{patient_id}
+]]></query>
+	<field name="id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appointment_table"/>
+	</field>
+	<field name="date" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="date"/>
+		<property name="com.jaspersoft.studio.field.label" value="date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appointment_table"/>
+	</field>
+	<field name="time" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="time"/>
+		<property name="com.jaspersoft.studio.field.label" value="time"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appointment_table"/>
+	</field>
+	<field name="patient_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="patient_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="patient_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appointment_table"/>
+	</field>
+	<field name="therapySession_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="therapySession_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="therapySession_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="appointment_table"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="55" splitType="Stretch">
+		<element kind="staticText" uuid="750e3aa9-04fd-427a-97cd-a0a5dd0df56a" x="42" y="10" width="470" height="40" fontSize="27.0">
+			<text><![CDATA[SERANITY MENTAL HEALTH CENTER]]></text>
+		</element>
+	</title>
+	<pageHeader height="72" splitType="Stretch">
+		<element kind="staticText" uuid="59c8120d-8932-4613-ac7d-cca76913bb32" x="211" y="6" width="149" height="30" fontSize="12.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Appointment Details]]></text>
+		</element>
+		<element kind="line" uuid="d276d91c-957b-4a24-b18a-d930cb5ed911" x="135" y="36" width="300" height="1"/>
+	</pageHeader>
+	<columnHeader height="61" splitType="Stretch">
+		<element kind="staticText" uuid="c99a1612-f23c-400d-b3f9-8bbcae0b80f3" x="9" y="0" width="100" height="30" fontSize="14.0" bold="true">
+			<text><![CDATA[id]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a1ace6f3-e237-45f0-95f3-e55bbb6237a0"/>
+		</element>
+		<element kind="staticText" uuid="9904080b-cd79-49c8-8088-b5b67de5e67f" x="130" y="0" width="100" height="30" fontSize="14.0" bold="true">
+			<text><![CDATA[date]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6d818d47-85ac-43a4-b37f-946a6e9d88f2"/>
+		</element>
+		<element kind="staticText" uuid="2d1f75ff-5619-421d-90d4-95e5d3877f08" x="290" y="0" width="100" height="30" fontSize="14.0" bold="true">
+			<text><![CDATA[time]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a03a3695-c6bd-49f1-bd9f-2a5978c6e63d"/>
+		</element>
+		<element kind="staticText" uuid="fd91752a-fae1-49a0-89ff-c8f4c9c7129b" x="459" y="0" width="100" height="30" fontSize="14.0" bold="true">
+			<text><![CDATA[Session]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ccc822b-1bbf-445b-b47a-3d1d5b9d772c"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="43" splitType="Stretch">
+			<element kind="textField" uuid="d5bcd6ca-e2c6-43ba-8b46-287edb3c9074" x="4" y="0" width="100" height="30">
+				<expression><![CDATA[$F{id}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a1ace6f3-e237-45f0-95f3-e55bbb6237a0"/>
+			</element>
+			<element kind="textField" uuid="8a8cffaf-86e7-4eef-a814-bd5c8d6ca2ce" x="110" y="0" width="100" height="30">
+				<expression><![CDATA[$F{date}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6d818d47-85ac-43a4-b37f-946a6e9d88f2"/>
+			</element>
+			<element kind="textField" uuid="ed3e5ba6-a1f7-4257-ae0b-b109d4373d59" x="270" y="0" width="100" height="30">
+				<expression><![CDATA[$F{time}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a03a3695-c6bd-49f1-bd9f-2a5978c6e63d"/>
+			</element>
+			<element kind="textField" uuid="c6a25791-feb1-4eab-bfeb-c8e3d2e6d1cd" x="476" y="0" width="100" height="30">
+				<expression><![CDATA[$F{therapySession_id}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ccc822b-1bbf-445b-b47a-3d1d5b9d772c"/>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="2" splitType="Stretch"/>
+	<pageFooter height="59" splitType="Stretch">
+		<element kind="textField" uuid="aed8b51d-8541-42c6-aa3b-5a64a17f07e6" x="470" y="13" width="100" height="30">
+			<expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="staticText" uuid="51088327-106e-4cf5-96dd-30ef4176d711" x="206" y="20" width="143" height="30" fontSize="8.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[System By Manuth Lakdiw]]></text>
+		</element>
+	</pageFooter>
+	<summary height="76" splitType="Stretch">
+		<element kind="textField" uuid="e4eaa30c-2754-44fd-bd3c-752f5cb79e5c" x="51" y="38" width="100" height="28" fontSize="12.0" bold="true">
+			<expression><![CDATA[$P{patientName}]]></expression>
+		</element>
+		<element kind="staticText" uuid="48c6408c-8f0b-46cc-ad1e-36d2837846d8" x="0" y="39" width="100" height="30">
+			<text><![CDATA[Name : ]]></text>
+		</element>
+		<element kind="staticText" uuid="f3efeef5-b32d-485b-b9af-0ccd09177408" x="389" y="41" width="100" height="30">
+			<text><![CDATA[Contact : ]]></text>
+		</element>
+		<element kind="textField" uuid="47303c7d-ecf2-4dd6-a840-f3ca6afc4b69" x="442" y="41" width="94" height="30" bold="true">
+			<expression><![CDATA[$P{contact_number}]]></expression>
+		</element>
+	</summary>
+</jasperReport>

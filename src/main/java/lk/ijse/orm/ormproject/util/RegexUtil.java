@@ -41,7 +41,7 @@ public class RegexUtil {
     }
 
     public static<T extends TextInputControl> void resetErrorStyle(T... inputNodes) {
-        String resetStyle = "-fx-border-color: #1486cd;";
+        String resetStyle = "-fx-border-color: #95a5a6;";
         for (T node : inputNodes) {
             node.setStyle(resetStyle);
         }

@@ -1,11 +1,29 @@
+/* Root background color */
+.root {
+    -fx-base: #2ecc71; /* Green base color */
+    -fx-background: #ffffff; /* White background */
+}
+
+/* Text Fields */
 .text-f {
     -fx-pref-width: 250px;
     -fx-pref-height: 45px;
+    -fx-background-color: #ffffff; /* White background */
+    -fx-border-color: #2ecc71; /* Green border */
+    -fx-border-radius: 5px;
+    -fx-padding: 0 10px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333; /* Dark text color */
 }
 
+.text-f .prompt-text {
+    -fx-text-fill: #95a5a6; /* Gray prompt text */
+}
+
+/* Check Box */
 .check-b > .box {
     -fx-background-color: transparent;
-    -fx-border-color: white;
+    -fx-border-color: #2ecc71; /* Green border */
     -fx-border-radius: 100px;
     -fx-background-radius: 100px;
     -fx-padding: 5px;
@@ -17,33 +35,39 @@
 }
 
 .check-b:selected > .box {
-    -fx-background-color: red;
+    -fx-background-color: #2ecc71; /* Green background when selected */
+    -fx-border-color: #27ae60; /* Darker green border */
 }
 
-.check-b > .box > .mark {
-    -fx-shape: "";
-    -fx-background-color: transparent;
+.check-b:selected > .box > .mark {
+    -fx-background-color: white; /* White check mark */
 }
 
 .check-b > .box:hover {
     -fx-cursor: hand;
+    -fx-border-color: #27ae60; /* Darker green on hover */
 }
 
-
-
-.login-btn{
+/* Login Button */
+.login-btn {
     -fx-pref-width: 100px;
-    -fx-border-color: #24a0ed;
+    -fx-border-color: #2ecc71; /* Green border */
     -fx-border-radius: 5px;
-    -fx-background-color: transparent;
+    -fx-background-color: #2ecc71; /* Green background */
+    -fx-text-fill: white; /* White text */
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(46,204,113,0.3), 5, 0, 0, 1);
 }
 
-.login-btn:hover{
+.login-btn:hover {
     -fx-cursor: hand;
+    -fx-background-color: #27ae60; /* Darker green on hover */
+    -fx-border-color: #27ae60;
+    -fx-effect: dropshadow(gaussian, rgba(39,174,96,0.4), 7, 0, 0, 2);
 }
 
-
-
-
-
-
+.login-btn:pressed {
+    -fx-background-color: #219a52; /* Even darker green when pressed */
+}

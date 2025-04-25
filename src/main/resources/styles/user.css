@@ -1,79 +1,104 @@
-.btn-add-user{
+/* Add User Button */
+.btn-add-user {
     -fx-pref-width: 150px;
-    -fx-border-width: 0.2px;
-    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-border-color: #2ecc71; /* Green border */
     -fx-border-radius: 5px;
-    -fx-background-color: #1e9cea;
+    -fx-background-color: #2ecc71; /* Green background */
     -fx-font-family: Arial;
     -fx-font-weight: bold;
-    -fx-font-size: 17px;
-    -fx-fill: white;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(46,204,113,0.3), 5, 0, 0, 1);
 }
 
-.btn-add-user:hover{
-    -fx-background-color: #1486cd;
+.btn-add-user:hover {
+    -fx-background-color: #27ae60; /* Darker green */
     -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(39,174,96,0.4), 7, 0, 0, 2);
 }
 
-.usr-input{
-    -fx-border-color: #1486cd;
-    -fx-border-width: 0.3px;
-    -fx-background-color: transparent;
+/* User Input Field */
+.usr-input {
+    -fx-border-color: #95a5a6; /* Gray border */
+    -fx-border-width: 1px;
+    -fx-background-color: white;
     -fx-border-radius: 5px;
     -fx-font-size: 14px;
-    -fx-letter-spacing: 10px;
-    -fx-text-fill: #24a0ed;
-    -fx-padding: 0px 0px 0px 5px;
-
+    -fx-letter-spacing: 1px;
+    -fx-text-fill: #2d3436; /* Dark text */
+    -fx-padding: 8px;
 }
 
 .usr-input:focused {
-    -fx-border-radius: 5px;
-    -fx-border-width: 0.4px;
-    -fx-border-color: #24a0ed;
+    -fx-border-color: #2ecc71; /* Green focus border */
+    -fx-border-width: 1.5px;
 }
 
+.usr-input .prompt-text {
+    -fx-text-fill: #95a5a6; /* Gray prompt text */
+}
 
-.cmb{
+/* Combo Box */
+.cmb {
     -fx-background-insets: 0;
+    -fx-border-color: #2ecc71;
+    -fx-border-radius: 5px;
 }
 
 .combo-box .list-cell {
-    -fx-background-color: transparent;
-    -fx-text-fill: #24a0ed;
+    -fx-background-color: white;
+    -fx-text-fill: #2d3436;
+    -fx-padding: 8px;
 }
 
 .combo-box .list-cell:hover {
-    -fx-background-color: #24a0ed;
-    -fx-text-fill: black;
+    -fx-background-color: #2ecc71; /* Green hover */
+    -fx-text-fill: white;
 }
 
-.btn{
+.combo-box .list-view {
+    -fx-background-color: white;
+    -fx-border-color: #2ecc71;
+}
+
+/* General Buttons */
+.btn {
     -fx-pref-width: 80px;
     -fx-border-radius: 5px;
-
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-padding: 8px;
 }
 
-.btn:hover{
+.btn:hover {
     -fx-cursor: hand;
-
 }
-.btn-usr-save{
-    -fx-border-color: #24a0ed;
-    -fx-background-color: black;
+
+/* Save Button */
+.btn-usr-save {
+    -fx-border-color: #2ecc71; /* Green border */
+    -fx-background-color: white;
     -fx-pref-height: 40px;
-    -fx-text-fill: #24a0ed;
+    -fx-text-fill: #2ecc71; /* Green text */
     -fx-font-weight: bold;
-    -fx-font-family: Arial;
 }
 
-
-.btn-clear{
-    -fx-background-color: rgba(128, 128, 128, 0.3);
-    -fx-pref-height: 30px;
+.btn-usr-save:hover {
+    -fx-background-color: #2ecc71; /* Green background */
     -fx-text-fill: white;
-    -fx-font-weight: normal;
-    -fx-font-family: Arial;
 }
 
+/* Clear Button */
+.btn-clear {
+    -fx-background-color: transparent;
+    -fx-border-color: #95a5a6; /* Gray border */
+    -fx-pref-height: 30px;
+    -fx-text-fill: #95a5a6; /* Gray text */
+    -fx-font-weight: normal;
+}
 
+.btn-clear:hover {
+    -fx-background-color: #e8f5e9; /* Light green hover */
+    -fx-text-fill: #2d3436;
+}

@@ -11,6 +11,7 @@ module lk.ijse.orm.ormproject {
     requires java.mail;
     requires java.management;
     requires org.controlsfx.controls;
+    requires net.sf.jasperreports.core;
     requires de.jensd.fx.glyphs.materialicons;
 
     opens lk.ijse.orm.ormproject.controller to javafx.fxml;

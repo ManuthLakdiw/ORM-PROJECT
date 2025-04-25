@@ -4,12 +4,16 @@ import de.jensd.fx.glyphs.materialicons.MaterialIcon;
 import de.jensd.fx.glyphs.materialicons.utils.MaterialIconFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import lk.ijse.orm.ormproject.bo.BoFactory;
@@ -27,6 +31,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class AppointmentTableFormController implements Initializable {
 
@@ -64,6 +69,11 @@ public class AppointmentTableFormController implements Initializable {
     private TableView<AppointmentTm> tblAppointment;
 
     @FXML
+    private TextField txtFindAppointment;
+
+    FilteredList filter;
+
+    @FXML
     void btnAddOnMouseClicked(MouseEvent event) {
         AppointmentActionFormController appointmentActionFormController = NavigationUtil.loadSubStage(
                 AppointmentTableFormController.class,
@@ -89,6 +99,9 @@ public class AppointmentTableFormController implements Initializable {
                 appointmentTms.add(appointmentTm);
             }
             tblAppointment.setItems(appointmentTms);
+
+            filter = new FilteredList(appointmentTms, e -> true);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -180,5 +193,26 @@ public class AppointmentTableFormController implements Initializable {
 
 
         loadTable();
+    }
+
+    public void txtFindAppointmentOnKeyAction(KeyEvent keyEvent) {
+        txtFindAppointment.textProperty().addListener((observable, oldValue, newValue) -> {
+            filter.setPredicate((Predicate<? super AppointmentTm>) (AppointmentTm appointmentTm) -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true; // Return all subjects if the search text is empty
+                } else {
+                    // Perform case-insensitive matching
+                    return appointmentTm.getId().toLowerCase().contains(newValue.toLowerCase()) ||
+                            appointmentTm.getSession().toLowerCase().contains(newValue.toLowerCase()) ||
+                            appointmentTm.getPatient().toLowerCase().contains(newValue.toLowerCase()) ||
+                            String.valueOf(appointmentTm.getDate()).toLowerCase().contains(newValue.toLowerCase()) ||
+                            String.valueOf(appointmentTm.getTime()).toLowerCase().contains(newValue.toLowerCase());
+                }
+            });
+
+            SortedList<AppointmentTm> sortedList = new SortedList<>(filter);
+            sortedList.comparatorProperty().bind(tblAppointment.comparatorProperty());
+            tblAppointment.setItems(sortedList);
+        });
     }
 }

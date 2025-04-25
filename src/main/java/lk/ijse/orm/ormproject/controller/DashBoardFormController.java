@@ -1,7 +1,12 @@
 package lk.ijse.orm.ormproject.controller;
 
+import de.jensd.fx.glyphs.materialicons.MaterialIcon;
+import de.jensd.fx.glyphs.materialicons.utils.MaterialIconFactory;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -10,8 +15,10 @@ import lk.ijse.orm.ormproject.util.NavigationUtil;
 import lombok.Setter;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class DashBoardFormController {
+public class DashBoardFormController implements Initializable {
 
     @FXML
     private Button btnLogout;
@@ -39,6 +46,9 @@ public class DashBoardFormController {
 
     @FXML
     private Button btnPayment;
+
+    @FXML
+    private Label lblHome;
 
 
 
@@ -120,9 +130,35 @@ public class DashBoardFormController {
         btnUser.setVisible(visible);
         btnUser.setManaged(visible);
 
-
-
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        btnLogout.setGraphic(MaterialIconFactory.get().createIcon(MaterialIcon.ARROW_BACK, "25px"));
+        lblHome.setGraphic(MaterialIconFactory.get().createIcon(MaterialIcon.HOME, "45px"));
+        lblHome.setTooltip(new Tooltip("Home"));
+        lblHome.setStyle("-fx-cursor: hand");
+
+
+        btnUser.setTooltip(new Tooltip("User"));
+        btnUser.setStyle("-fx-cursor: hand");
+        btnTherapist.setTooltip(new Tooltip("Therapist"));
+        btnTherapist.setStyle("-fx-cursor: hand");
+        btnPatient.setTooltip(new Tooltip("Patient"));
+        btnPatient.setStyle("-fx-cursor: hand");
+        btnProgramme.setTooltip(new Tooltip("Programme"));
+        btnProgramme.setStyle("-fx-cursor: hand");
+        btnSession.setTooltip(new Tooltip("Session"));
+        btnSession.setStyle("-fx-cursor: hand");
+        btnAppointment.setTooltip(new Tooltip("Appointment"));
+        btnAppointment.setStyle("-fx-cursor: hand");
+        btnPayment.setTooltip(new Tooltip("Payment"));
+        btnPayment.setStyle("-fx-cursor: hand");
+        btnLogout.setTooltip(new Tooltip("Logout"));
+        btnLogout.setStyle("-fx-cursor: hand");
+
+
+
+    }
 }

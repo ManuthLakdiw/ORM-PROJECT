@@ -1,33 +1,53 @@
 .dialog-pane {
-    -fx-background-color: black;
+    -fx-background-color: #ffffff; /* White background */
+    -fx-border-color: #2ecc71; /* Green border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
 }
 
 .dialog-pane .header-panel {
-    -fx-background-color: black;
+    -fx-background-color: #2ecc71; /* Green header */
+    -fx-padding: 10px;
 }
 
 .dialog-pane .header-panel .label {
-    -fx-text-fill: black;
+    -fx-text-fill: white; /* White header text */
     -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-border-radius: 4px;
+    -fx-font-family: Arial;
 }
 
 .dialog-pane .content.label {
-    -fx-text-fill: #24a0ed;
+    -fx-text-fill: #2d3436; /* Dark text */
     -fx-font-size: 14px;
+    -fx-padding: 15px;
+    -fx-font-family: Arial;
 }
 
 .dialog-pane .button {
-    -fx-background-color: transparent;
-    -fx-text-fill: white;
-    -fx-border-color: #555;
+    -fx-background-color: #ffffff; /* White background */
+    -fx-text-fill: #2ecc71; /* Green text */
+    -fx-border-color: #2ecc71; /* Green border */
     -fx-border-radius: 3px;
     -fx-font-size: 12px;
     -fx-font-weight: bold;
-    -fx-padding: 5px 10px;
+    -fx-padding: 5px 15px;
+    -fx-font-family: Arial;
 }
 
 .dialog-pane .button:hover {
     -fx-cursor: hand;
+    -fx-background-color: #2ecc71; /* Green background */
+    -fx-text-fill: white; /* White text */
+}
+
+.dialog-pane .button:pressed {
+    -fx-background-color: #27ae60; /* Darker green */
+}
+
+/* Optional: Add green focus indicator */
+.dialog-pane .button:focused {
+    -fx-border-color: #27ae60;
+    -fx-border-width: 1.5px;
 }
