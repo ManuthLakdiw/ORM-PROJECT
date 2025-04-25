@@ -88,4 +88,21 @@ public class PatientBoImpl implements PatientBo {
         return patientDao.update(patient);
 
     }
+
+    @Override
+    public PatientDto getPatient(String id) throws Exception {
+        Optional<Patient> byId = patientDao.findById(id);
+        if (byId.isPresent()) {
+            PatientDto patientDto = new PatientDto();
+            patientDto.setId(byId.get().getId());
+            patientDto.setTitle(byId.get().getTitle());
+            patientDto.setName(byId.get().getName());
+            patientDto.setDob(byId.get().getDob());
+            patientDto.setHomeAddress(byId.get().getHomeAddress());
+            patientDto.setTelephone(byId.get().getTelephone());
+            patientDto.setEmailAddress(byId.get().getEmailAddress());
+            return patientDto;
+        }
+        return null;
+    }
 }

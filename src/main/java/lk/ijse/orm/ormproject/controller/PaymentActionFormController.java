@@ -14,31 +14,36 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import lk.ijse.orm.ormproject.bo.BoFactory;
 import lk.ijse.orm.ormproject.bo.BoTypes;
+import lk.ijse.orm.ormproject.bo.custom.PatientBo;
 import lk.ijse.orm.ormproject.bo.custom.PaymentBo;
 import lk.ijse.orm.ormproject.bo.custom.ProgrammeBo;
 import lk.ijse.orm.ormproject.bo.custom.TherapySessionBo;
-import lk.ijse.orm.ormproject.dto.AppointmentDto;
-import lk.ijse.orm.ormproject.dto.PaymentDto;
-import lk.ijse.orm.ormproject.dto.ProgrammeDto;
-import lk.ijse.orm.ormproject.dto.TherapySessionDto;
+import lk.ijse.orm.ormproject.config.FactoryConfiguration;
+import lk.ijse.orm.ormproject.dto.*;
 import lk.ijse.orm.ormproject.exception.MissingFieldException;
 import lk.ijse.orm.ormproject.util.AlertUtil;
 import lk.ijse.orm.ormproject.util.RegexUtil;
 import lombok.Getter;
 import lombok.Setter;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import org.hibernate.Session;
 
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.sql.Connection;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class PaymentActionFormController implements Initializable {
 
     PaymentBo paymentBo = BoFactory.getInstance().getBo(BoTypes.PAYMENT);
     TherapySessionBo therapySessionBo = BoFactory.getInstance().getBo(BoTypes.THERAPYSESSION);
     ProgrammeBo programmeBo = BoFactory.getInstance().getBo(BoTypes.PROGRAMME);
+    PatientBo patientBo = BoFactory.getInstance().getBo(BoTypes.PATIENT);
 
     @Getter
     @Setter
@@ -106,8 +111,40 @@ public class PaymentActionFormController implements Initializable {
                 try {
                     boolean isSaved = paymentBo.savePayment(paymentDto);
                     if (isSaved) {
+                        Thread invoiceThread = new Thread(() -> {
+                            try {
+                                Map<String, Object> parameters = new HashMap<>();
+                                System.out.println(lblPatient.getText() + " patient ");
+                                PatientDto patient = patientBo.getPatient(lblPatient.getText());
+
+                                TherapySessionDto session = therapySessionBo.getSession(lblSession.getText());
+                                ProgrammeDto programme = programmeBo.getProgramme(session.getProgramme());
+
+
+                                parameters.put("patient", lblPatient.getText());
+                                parameters.put("patient_name", patient.getTitle()+"."+patient.getName());
+                                parameters.put("session", programme.getProgrammeName());
+                                Session hibernateSession = FactoryConfiguration.getInstance().getSession();
+                                Connection hibernateConn = hibernateSession.doReturningWork(connection -> connection);
+                                InputStream reportStream = getClass().getResourceAsStream("/reports/invoice.jrxml");
+                                JasperDesign design = JRXmlLoader.load(reportStream);
+                                JasperReport jasperReport = JasperCompileManager.compileReport(design);
+                                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,hibernateConn);
+                                JasperViewer.viewReport(jasperPrint, false);
+
+                            } catch (JRException e) {
+                                e.printStackTrace();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        invoiceThread.start();
+
+
+
                         paymentTableFormController.loadPaymentTable();
                         resetFields();
+
                         AlertUtil.setInformationAlert(getClass(),"","Payment added successfully!" , false);
                     }else {
                         AlertUtil.setInformationAlert(getClass(),"","Cannot add payment!!!." , false);

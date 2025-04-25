@@ -1,0 +1,163 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="invoice" language="java" columnCount="1" pageWidth="420" pageHeight="595" orientation="Landscape" columnWidth="380" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="124603af-ac28-4c1d-a132-8eecf7abaf6f">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (6)"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="patient" class="java.lang.String"/>
+	<parameter name="session" class="java.lang.String"/>
+	<parameter name="patient_name" class="java.lang.String"/>
+	<query language="SQL"><![CDATA[SELECT * FROM payment_table WHERE patient = $P{patient}
+]]></query>
+	<field name="id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment_table"/>
+	</field>
+	<field name="date" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="date"/>
+		<property name="com.jaspersoft.studio.field.label" value="date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment_table"/>
+	</field>
+	<field name="dueAmount" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="dueAmount"/>
+		<property name="com.jaspersoft.studio.field.label" value="dueAmount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment_table"/>
+	</field>
+	<field name="paidAmount" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="paidAmount"/>
+		<property name="com.jaspersoft.studio.field.label" value="paidAmount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment_table"/>
+	</field>
+	<field name="patient" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="patient"/>
+		<property name="com.jaspersoft.studio.field.label" value="patient"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment_table"/>
+	</field>
+	<field name="sessionFee" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="sessionFee"/>
+		<property name="com.jaspersoft.studio.field.label" value="sessionFee"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment_table"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment_table"/>
+	</field>
+	<field name="appointment_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="appointment_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="appointment_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment_table"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="142" splitType="Stretch">
+		<element kind="rectangle" uuid="4e3d45fa-79a1-41a7-9b95-3b6ca62e20fb" x="230" y="10" width="170" height="50" backcolor="#05FFD5">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="1422ac7e-9ce6-4e12-a4c1-9aa6db972731" x="265" y="20" width="100" height="30" fontName="Euphemia UCAS" fontSize="20.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[INVOICE]]></text>
+		</element>
+		<element kind="staticText" uuid="c88313c2-c77f-4acd-8dca-534023bd3225" x="-12" y="7" width="140" height="40" fontSize="28.0" bold="true">
+			<text><![CDATA[Seranity]]></text>
+		</element>
+		<element kind="staticText" uuid="45873abc-825b-4f22-a47b-7f0e05d4c9ed" x="28" y="40" width="140" height="48" fontSize="18.0">
+			<text><![CDATA[Mental Health Center]]></text>
+		</element>
+		<element kind="line" uuid="4a8b0c28-5db7-42c8-bede-a012c4bc3966" x="-20" y="90" width="237" height="1" forecolor="#05FFD1"/>
+		<element kind="line" uuid="1c6a6503-6000-43d8-b9cc-0a613f8d26e7" stretchType="NoStretch" x="163" y="110" width="237" height="1" forecolor="#05FFC1"/>
+		<element kind="staticText" uuid="5b4313bd-0df9-4dd4-b0ae-8be8082218fe" x="230" y="64" width="50" height="30" fontSize="12.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Date : ]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="87a3d818-a53c-4e5e-893f-afaf947ebdb3"/>
+		</element>
+		<element kind="textField" uuid="684465df-b49d-475f-bf1d-e2483ac7e143" x="273" y="66" width="100" height="30">
+			<expression><![CDATA[$F{date}]]></expression>
+		</element>
+	</title>
+	<pageHeader splitType="Stretch"/>
+	<columnHeader splitType="Stretch"/>
+	<detail>
+		<band height="297" splitType="Stretch">
+			<element kind="textField" uuid="9969104f-d5d0-46c3-91e5-55c778a65947" x="250" y="0" width="100" height="30" fontSize="12.0">
+				<expression><![CDATA[$F{id}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="87a3d818-a53c-4e5e-893f-afaf947ebdb3"/>
+			</element>
+			<element kind="staticText" uuid="5b709974-2311-4bc3-a9ba-7527a0c74217" x="30" y="0" width="100" height="30" fontSize="12.0" bold="true" hTextAlign="Left">
+				<text><![CDATA[Payment ID : ]]></text>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="87a3d818-a53c-4e5e-893f-afaf947ebdb3"/>
+			</element>
+			<element kind="staticText" uuid="aeff51be-952f-4a8f-96d1-e523213f33bd" x="30" y="40" width="100" height="30" fontSize="12.0" bold="true" hTextAlign="Left">
+				<text><![CDATA[Patient Name : ]]></text>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="87a3d818-a53c-4e5e-893f-afaf947ebdb3"/>
+			</element>
+			<element kind="staticText" uuid="e2961ddc-6dab-463b-8ae7-232a16135a1c" x="30" y="80" width="110" height="30" fontSize="12.0" bold="true" hTextAlign="Left">
+				<text><![CDATA[AppointMent ID :]]></text>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="87a3d818-a53c-4e5e-893f-afaf947ebdb3"/>
+			</element>
+			<element kind="staticText" uuid="58dc9f2c-c6af-4115-a804-b3636bf28816" x="250" y="80" width="100" height="30">
+				<text><![CDATA[appointment_id]]></text>
+			</element>
+			<element kind="staticText" uuid="beb7cf58-d19a-4344-a1b7-28a8e3258cda" x="30" y="120" width="110" height="30" fontSize="12.0" bold="true" hTextAlign="Left">
+				<text><![CDATA[Session :]]></text>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="87a3d818-a53c-4e5e-893f-afaf947ebdb3"/>
+			</element>
+			<element kind="textField" uuid="4e522a20-410c-4b81-a42a-3d1ca4dbd6bf" x="250" y="120" width="100" height="30">
+				<expression><![CDATA[$P{session}]]></expression>
+			</element>
+			<element kind="staticText" uuid="9481e404-dcae-45ed-8c4e-0666429871dc" x="30" y="160" width="110" height="30" fontSize="12.0" bold="true" hTextAlign="Left">
+				<text><![CDATA[Session Fee :]]></text>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="87a3d818-a53c-4e5e-893f-afaf947ebdb3"/>
+			</element>
+			<element kind="textField" uuid="78ee1a0e-8caf-474c-b88b-4277cdd7fc1f" x="250" y="160" width="100" height="30">
+				<expression><![CDATA[$F{sessionFee}]]></expression>
+			</element>
+			<element kind="staticText" uuid="cefe93a6-3a5a-4009-8b43-e24760f70076" x="30" y="200" width="110" height="30" fontSize="12.0" bold="true" hTextAlign="Left">
+				<text><![CDATA[Paid Amount :]]></text>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="87a3d818-a53c-4e5e-893f-afaf947ebdb3"/>
+			</element>
+			<element kind="textField" uuid="945e1688-3f8d-422e-beef-6e8f1ca3ef26" x="250" y="200" width="100" height="30">
+				<expression><![CDATA[$F{paidAmount}]]></expression>
+			</element>
+			<element kind="staticText" uuid="d19270df-36e8-4daa-b2a2-af676cf8f92a" x="30" y="253" width="110" height="30" fontSize="16.0" bold="true" hTextAlign="Left">
+				<text><![CDATA[Due Amount :]]></text>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="87a3d818-a53c-4e5e-893f-afaf947ebdb3"/>
+			</element>
+			<element kind="textField" uuid="88fdceaf-3247-4f9d-8184-429e3f4dabc6" x="250" y="253" width="100" height="30" forecolor="#820503" fontSize="16.0" bold="true">
+				<expression><![CDATA[$F{dueAmount}]]></expression>
+			</element>
+			<element kind="textField" uuid="3b6c3380-4a25-44da-acf0-a2b2e2c87cee" x="250" y="237" width="63" height="16" fontSize="8.0">
+				<expression><![CDATA[$F{sessionFee}]]></expression>
+			</element>
+			<element kind="textField" uuid="e9c19ddd-e2bd-42e7-bde5-9b07542a0fe6" x="305" y="237" width="70" height="18" fontSize="8.0">
+				<expression><![CDATA[$F{paidAmount}]]></expression>
+			</element>
+			<element kind="staticText" uuid="dd126ca4-9954-4788-94e2-512e55a1c66f" x="292" y="233" width="13" height="18" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[-]]></text>
+			</element>
+			<element kind="textField" uuid="939ea77a-9964-4526-aa65-e1f14e6ddb48" x="250" y="40" width="100" height="30">
+				<expression><![CDATA[$P{patient_name}]]></expression>
+			</element>
+		</band>
+	</detail>
+	<columnFooter splitType="Stretch"/>
+	<pageFooter height="70" splitType="Stretch">
+		<element kind="staticText" uuid="1b1eea69-72b4-4d84-9df6-a3b9f5ca9dce" x="40" y="30" width="292" height="30" fontSize="9.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[System By : Manuth Lakdiw (Contact me - 0761613447)]]></text>
+		</element>
+	</pageFooter>
+	<summary height="42" splitType="Stretch">
+		<element kind="staticText" uuid="12a19bf5-850a-473c-909c-f90786d12283" x="45" y="9" width="122" height="30" fontSize="14.0" bold="true" hTextAlign="Left">
+			<text><![CDATA[Payment Status :]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="87a3d818-a53c-4e5e-893f-afaf947ebdb3"/>
+		</element>
+		<element kind="textField" uuid="6fe20010-3a36-4106-984c-9a07ad61168e" x="178" y="4" width="162" height="30" fontSize="22.0">
+			<expression><![CDATA[$F{status}]]></expression>
+		</element>
+	</summary>
+</jasperReport>
