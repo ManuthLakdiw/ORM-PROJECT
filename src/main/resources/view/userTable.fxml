@@ -17,8 +17,8 @@
             <TableColumn fx:id="colUserName" minWidth="3.1930389404296875" prefWidth="287.0" text="Name" />
             <TableColumn fx:id="colUserRole" prefWidth="134.0" text="Role" />
             <TableColumn fx:id="colUserEmail" prefWidth="239.0" text="Email" />
-            <TableColumn fx:id="colUserUpdate" minWidth="0.0" prefWidth="70.0" text="update" />
-            <TableColumn fx:id="colUserDelete" prefWidth="72.0" text="delete" />
+            <TableColumn fx:id="colUserUpdate" minWidth="0.0" prefWidth="70.0" />
+            <TableColumn fx:id="colUserDelete" prefWidth="72.0" />
         </columns>
       </TableView>
       <Button fx:id="btnAdd" layoutX="832.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#btnAddOnMouseClicked" prefHeight="40.0" prefWidth="167.0" styleClass="btn-add-user" text="+ Add" textFill="WHITE" />

@@ -95,6 +95,8 @@ public class PaymentActionFormController implements Initializable {
                     return;
                 }
 
+
+
                 PaymentDto paymentDto = new PaymentDto();
 
                 paymentDto.setId(lblID.getText());
@@ -186,6 +188,34 @@ public class PaymentActionFormController implements Initializable {
                 try {
                     boolean isUpdate = paymentBo.updatePayment(paymentDto);
                     if (isUpdate) {
+                        Thread invoiceThread = new Thread(() -> {
+                            try {
+                                Map<String, Object> parameters = new HashMap<>();
+                                System.out.println(lblPatient.getText() + " patient ");
+                                PatientDto patient = patientBo.getPatient(lblPatient.getText());
+
+                                TherapySessionDto session = therapySessionBo.getSession(lblSession.getText());
+                                ProgrammeDto programme = programmeBo.getProgramme(session.getProgramme());
+
+
+                                parameters.put("patient", lblPatient.getText());
+                                parameters.put("patient_name", patient.getTitle()+"."+patient.getName());
+                                parameters.put("session", programme.getProgrammeName());
+                                Session hibernateSession = FactoryConfiguration.getInstance().getSession();
+                                Connection hibernateConn = hibernateSession.doReturningWork(connection -> connection);
+                                InputStream reportStream = getClass().getResourceAsStream("/reports/invoice.jrxml");
+                                JasperDesign design = JRXmlLoader.load(reportStream);
+                                JasperReport jasperReport = JasperCompileManager.compileReport(design);
+                                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,hibernateConn);
+                                JasperViewer.viewReport(jasperPrint, false);
+
+                            } catch (JRException e) {
+                                e.printStackTrace();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        invoiceThread.start();
                         paymentTableFormController.loadPaymentTable();
                         resetFields();
                         AlertUtil.setInformationAlert(getClass(),"","Payment updated successfully." , true);
@@ -199,9 +229,15 @@ public class PaymentActionFormController implements Initializable {
                 }
 
 
+            }else{
+                AlertUtil.setInformationAlert(
+                        getClass(),
+                        "",
+                        new MissingFieldException("Required field is missing.\nPlease provide all necessary information.").getMessage()
+                        ,true
+                );
             }
         }
-
     }
 
     @FXML
@@ -272,7 +308,7 @@ public class PaymentActionFormController implements Initializable {
                 lblBalance.setText(balance.toString());
 
             }else {
-                lblBalance.setText("");
+                lblBalance.setText("0.00");
             }
 
         }

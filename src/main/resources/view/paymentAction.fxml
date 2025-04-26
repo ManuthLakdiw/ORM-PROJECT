@@ -50,8 +50,8 @@
       <Label layoutX="14.0" layoutY="391.0" text="Paid Amount" />
       <Label layoutX="14.0" layoutY="328.0" text="Patient :" />
       <Label fx:id="lblPatient" layoutX="65.0" layoutY="328.0" prefHeight="17.0" prefWidth="246.0" textFill="#00a80b" />
-      <Label layoutX="175.0" layoutY="421.0" text="Balance :" />
-      <Label fx:id="lblBalance" layoutX="231.0" layoutY="416.0" prefHeight="30.0" prefWidth="168.0" textFill="#bc0000">
+      <Label layoutX="204.0" layoutY="392.0" text="Due Amount" />
+      <Label fx:id="lblBalance" layoutX="204.0" layoutY="411.0" prefHeight="30.0" prefWidth="168.0" styleClass="usr-input" textFill="#bc0000">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

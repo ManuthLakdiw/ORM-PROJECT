@@ -14,10 +14,10 @@
       <TableView fx:id="tblTherapist" layoutX="56.0" layoutY="241.0" prefHeight="362.0" prefWidth="924.0">
          <columns>
             <TableColumn fx:id="colID" prefWidth="79.0" text="ID" />
-            <TableColumn fx:id="colTherapistName" minWidth="3.1930389404296875" prefWidth="164.0" text="Therapist Name" />
-            <TableColumn fx:id="colTherapistEmail" prefWidth="180.0" text="Email" />
-            <TableColumn fx:id="colTherapistContactNumber" minWidth="0.0" prefWidth="113.0" text="Telephone" />
-            <TableColumn fx:id="colTherapistProgramme" minWidth="-Infinity" prefWidth="245.0" text="Programme" />
+            <TableColumn fx:id="colTherapistName" minWidth="3.1930389404296875" prefWidth="228.0" text="Therapist Name" />
+            <TableColumn fx:id="colTherapistEmail" prefWidth="224.0" text="Email" />
+            <TableColumn fx:id="colTherapistContactNumber" minWidth="0.0" prefWidth="135.0" text="Telephone" />
+            <TableColumn fx:id="colTherapistProgramme" minWidth="-Infinity" prefWidth="115.0" text="Programme" />
             <TableColumn fx:id="colTherapistUpdate" minWidth="70.0" prefWidth="-1.0" />
             <TableColumn fx:id="colTherapistDelete" minWidth="70.0" prefWidth="-1.0" />
          </columns>
